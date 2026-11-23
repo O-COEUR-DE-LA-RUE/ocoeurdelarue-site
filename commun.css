@@ -2,7 +2,7 @@
 
 /* ============ TOKENS — change la couleur rouge ici ============ */
 :root{
-  --red:#FF0000;
+  --red:#D70000;
   --black:#000000;
   --white:#FFFFFF;
   --paper:#FFFFFF;      /* fond des sections claires */
@@ -41,7 +41,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 .9375rem/1 var(--text);text-decoration:none;border-radius:999px;padding:12px 22px;transition:transform .35s var(--ease),background .25s,color .25s;cursor:pointer;border:0}
 .btn:active{transform:scale(.97)}
 .btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:#D60000}
+.btn-red:hover{background:#B50000}
 .btn-small{padding:8px 16px;font-size:.8125rem}
 .btn-line{border:1.5px solid currentColor;background:transparent}
 .btn-line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -55,7 +55,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .foot{background:var(--black);color:var(--night-muted);padding:60px 22px 40px;font-size:.875rem}
 .foot-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
 .foot .logo{color:#fff;display:inline-block;margin-bottom:10px}
-.foot h4{color:#fff;font-weight:600;font-size:.875rem;margin-bottom:10px}
+.foot h2{color:#fff;font-weight:600;font-size:.875rem;margin-bottom:10px}
 .foot ul{list-style:none;display:grid;gap:6px}
 .foot a{text-decoration:none}
 .foot a:hover{color:#fff}
@@ -86,7 +86,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
 .photo{background:#e8e8ed}
 .btn-line{color:var(--ink)}
 .foot{background:var(--soft);color:var(--muted)}
-.foot .logo,.foot h4,.foot a:hover{color:var(--ink)}
+.foot .logo,.foot h2,.foot a:hover{color:var(--ink)}
 .foot-legal{border-top:1px solid var(--line)}
 @media (max-width:899px){
   .mobile-menu{background:rgba(255,255,255,.97);color:var(--ink)}
@@ -100,6 +100,6 @@ body::before,.nav{background:rgba(255,255,255,.8)}
 .press-video.spo-video{width:100%;aspect-ratio:16/9;border-radius:26px}
 .press-video video{width:100%;height:100%;object-fit:cover;display:block}
 .press-play{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;font:600 .9375rem/1 var(--text);color:#fff;background:var(--red);border:0;border-radius:999px;padding:14px 22px 14px 18px;white-space:nowrap;cursor:pointer;box-shadow:0 10px 30px rgba(255,0,0,.4);transition:transform .35s var(--ease),background .25s}
-.press-play:hover{background:#D60000;transform:translateX(-50%) scale(1.04)}
+.press-play:hover{background:#B50000;transform:translateX(-50%) scale(1.04)}
 .press-play svg{width:20px;height:20px}
 .press-video.is-playing .press-play{opacity:0;pointer-events:none}

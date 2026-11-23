@@ -5,14 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>O Cœur de la Rue — Solidarité de terrain à Paris</title>
 <meta name="description" content="Association solidaire créée en 2019 à Paris 14e. Maraudes, repas chauds, café solidaire, distributions alimentaires.">
+<link rel="canonical" href="https://www.ocoeurdelarue.org/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="O Cœur de la Rue">
+<meta property="og:title" content="O Cœur de la Rue — Solidarité de terrain à Paris">
+<meta property="og:description" content="Association solidaire créée en 2019 à Paris 14e. Maraudes, repas chauds, café solidaire, distributions alimentaires.">
+<meta property="og:url" content="https://www.ocoeurdelarue.org/">
+<meta property="og:image" content="https://www.ocoeurdelarue.org/photos/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="L’équipe et les bénévoles d’O Cœur de la Rue">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NGO", "name": "O Cœur de la Rue", "alternateName": "OCLR", "url": "https://www.ocoeurdelarue.org/", "logo": "https://www.ocoeurdelarue.org/photos/logo-ocdlr-noir.png", "image": "https://www.ocoeurdelarue.org/photos/og-image.jpg", "description": "Association solidaire créée en 2019 à Paris 14e. Maraudes, repas chauds, café solidaire, distributions alimentaires.", "foundingDate": "2019", "email": "contact@ocoeurdelarue.org", "address": {"@type": "PostalAddress", "streetAddress": "8 rue du Général Humbert", "postalCode": "75014", "addressLocality": "Paris", "addressCountry": "FR"}, "sameAs": ["https://instagram.com/Ocoeur2larue", "https://www.tiktok.com/@ocoeur2larue", "https://www.youtube.com/channel/UC0jvxvRueylT-3jmI7A1AdA", "https://www.facebook.com/Ocoeur2larue", "https://www.linkedin.com/company/oceur2larue", "https://linktr.ee/ocoeurdelarue"]}</script>
 <meta name="theme-color" content="#000000">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 /* ============ TOKENS — change la couleur rouge ici ============ */
 :root{
-  --red:#FF0000;
+  --red:#D70000;
   --black:#000000;
   --white:#FFFFFF;
   --paper:#FFFFFF;      /* fond des sections claires */
@@ -51,7 +67,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 .9375rem/1 var(--text);text-decoration:none;border-radius:999px;padding:12px 22px;transition:transform .35s var(--ease),background .25s,color .25s;cursor:pointer;border:0}
 .btn:active{transform:scale(.97)}
 .btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:#D60000}
+.btn-red:hover{background:#B50000}
 .btn-small{padding:8px 16px;font-size:.8125rem}
 .btn-line{border:1.5px solid currentColor;background:transparent}
 .btn-line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -169,7 +185,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .direct-grid a{height:100%;display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:22px;background:#161616;text-decoration:none;transition:background .25s}
 .direct-grid a:hover{background:#222}
 .direct-grid li:first-child a{background:var(--red)}
-.direct-grid li:first-child a:hover{background:#D60000}
+.direct-grid li:first-child a:hover{background:#B50000}
 .direct-grid b{font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,1.97vw,1.84rem);line-height:1;letter-spacing:-.035em}
 .direct-grid span{flex:1;color:#cfcfcf;font-size:.9375rem}
 .direct-grid li:first-child span{color:#fff}
@@ -205,7 +221,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .press-video{position:relative;height:min(76vh,780px);aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#111;box-shadow:0 30px 80px rgba(0,0,0,.25)}
 .press-video video{width:100%;height:100%;object-fit:cover;display:block}
 .press-play{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;font:600 .9375rem/1 var(--text);color:#fff;background:var(--red);border:0;border-radius:999px;padding:14px 22px 14px 18px;white-space:nowrap;cursor:pointer;box-shadow:0 10px 30px rgba(255,0,0,.4);transition:transform .35s var(--ease),background .25s}
-.press-play:hover{background:#D60000;transform:translateX(-50%) scale(1.04)}
+.press-play:hover{background:#B50000;transform:translateX(-50%) scale(1.04)}
 .press-play svg{width:20px;height:20px}
 .press-video.is-playing .press-play{opacity:0;pointer-events:none}
 .press-credit{grid-column:2;justify-self:center;margin-top:14px;font-size:.8125rem;color:var(--muted)}
@@ -237,7 +253,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .foot{background:var(--black);color:var(--night-muted);padding:60px 22px 40px;font-size:.875rem}
 .foot-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
 .foot .logo{color:#fff;display:inline-block;margin-bottom:10px}
-.foot h4{color:#fff;font-weight:600;font-size:.875rem;margin-bottom:10px}
+.foot h2{color:#fff;font-weight:600;font-size:.875rem;margin-bottom:10px}
 .foot ul{list-style:none;display:grid;gap:6px}
 .foot a{text-decoration:none}
 .foot a:hover{color:#fff}
@@ -362,7 +378,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
 .photo{background:#e8e8ed}
 .btn-line{color:var(--ink)}
 .foot{background:var(--soft);color:var(--muted)}
-.foot .logo,.foot h4,.foot a:hover{color:var(--ink)}
+.foot .logo,.foot h2,.foot a:hover{color:var(--ink)}
 .foot-legal{border-top:1px solid var(--line)}
 @media (max-width:899px){
   .mobile-menu{background:rgba(255,255,255,.97);color:var(--ink)}
@@ -399,15 +415,15 @@ body::before,.nav{background:rgba(255,255,255,.8)}
 
 <nav class="nav" data-open="false" aria-label="Navigation principale">
   <div class="nav-in">
-    <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+    <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="642" height="160"></a>
     <ul class="nav-links">
       <li><a href="#terrain">Le terrain</a></li>
       <li><a href="#programmes">Programmes</a></li>
-      <li><a href="partenaires.html">Partenaires</a></li>
-      <li><a href="benevole.html">Bénévolat</a></li>
+      <li><a href="/partenaires">Partenaires</a></li>
+      <li><a href="/benevole">Bénévolat</a></li>
       <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
     </ul>
-    <a class="btn btn-red btn-small" href="dons.html">Faire un don</a>
+    <a class="btn btn-red btn-small" href="/dons">Faire un don</a>
     <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </nav>
@@ -415,11 +431,11 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   <ul>
     <li><a href="#terrain">Le terrain</a></li>
     <li><a href="#programmes">Programmes</a></li>
-    <li><a href="partenaires.html">Partenaires</a></li>
-    <li><a href="benevole.html">Bénévolat</a></li>
+    <li><a href="/partenaires">Partenaires</a></li>
+    <li><a href="/benevole">Bénévolat</a></li>
     <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
   </ul>
-  <a class="btn btn-red" href="dons.html">Faire un don</a>
+  <a class="btn btn-red" href="/dons">Faire un don</a>
 </div>
 
 <main id="top">
@@ -428,9 +444,9 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   <section class="hero" aria-label="On cuisine. On distribue. On accueille. On partage. On agit.">
     <div class="hero-sticky">
       <div class="hero-frame">
-        <figure class="photo" data-src="photos/hero-1.jpg" data-video="videos/hero-1.mp4" data-alt="La cuisine du samedi"><img src="photos/hero-1.jpg" alt="La cuisine du samedi" decoding="async"><video src="videos/hero-1.mp4" poster="photos/hero-1.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
-        <figure class="photo" data-src="photos/hero-2.jpg" data-video="videos/hero-2.mp4" data-alt="Récolte chez un maraîcher"><img src="photos/hero-2.jpg" alt="Récolte chez un maraîcher" decoding="async"><video src="videos/hero-2.mp4" poster="photos/hero-2.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
-        <figure class="photo" data-src="photos/hero-3.jpg" data-video="videos/hero-3.mp4" data-alt="Le café solidaire"><img src="photos/hero-3.jpg" alt="Le café solidaire" decoding="async"><video src="videos/hero-3.mp4" poster="photos/hero-3.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+        <figure class="photo" data-src="photos/hero-1.jpg" data-video="videos/hero-1.mp4" data-alt="La cuisine du samedi"><img src="photos/hero-1.jpg" alt="La cuisine du samedi" decoding="async" fetchpriority="high" width="720" height="1280"><video src="videos/hero-1.mp4" poster="photos/hero-1.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+        <figure class="photo" data-src="photos/hero-2.jpg" data-video="videos/hero-2.mp4" data-alt="Récolte chez un maraîcher"><img src="photos/hero-2.jpg" alt="Récolte chez un maraîcher" decoding="async" width="720" height="1280"><video src="videos/hero-2.mp4" poster="photos/hero-2.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+        <figure class="photo" data-src="photos/hero-3.jpg" data-video="videos/hero-3.mp4" data-alt="Le café solidaire"><img src="photos/hero-3.jpg" alt="Le café solidaire" decoding="async" width="720" height="1280"><video src="videos/hero-3.mp4" poster="photos/hero-3.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
       </div>
       <h1 class="hero-words">
         <span class="hero-word is-active">On cuisine.</span>
@@ -460,28 +476,28 @@ body::before,.nav{background:rgba(255,255,255,.8)}
       </div>
       <div class="samedi-track">
         <article class="step">
-          <figure class="photo" data-src="photos/cafe.jpg" data-alt="La façade du café associatif"><img src="photos/cafe.jpg" alt="La façade du café associatif" decoding="async" loading="lazy"></figure>
+          <figure class="photo" data-src="photos/cafe.jpg" data-alt="La façade du café associatif"><img src="photos/cafe.jpg" alt="La façade du café associatif" decoding="async" loading="lazy" width="1440" height="1800"></figure>
           <div class="step-body">
             <div class="step-txt"><h3>Le café</h3><p>Café, crêpes, sodas à prix solidaires. Tout ce qui est gagné repart dans les actions.</p></div>
             <span class="step-num">01</span>
           </div>
         </article>
         <article class="step">
-          <figure class="photo" data-src="photos/cuisine.jpg" data-alt="Un bénévole coupe des poivrons en cuisine"><img src="photos/cuisine.jpg" alt="Un bénévole coupe des poivrons en cuisine" decoding="async" loading="lazy"></figure>
+          <figure class="photo" data-src="photos/cuisine.jpg" data-alt="Un bénévole coupe des poivrons en cuisine"><img src="photos/cuisine.jpg" alt="Un bénévole coupe des poivrons en cuisine" decoding="async" loading="lazy" width="1800" height="1200"></figure>
           <div class="step-body">
             <div class="step-txt"><h3>La cuisine</h3><p>On cuisine les invendus récupérés. Des fruits et légumes bio quand on peut.</p></div>
             <span class="step-num">02</span>
           </div>
         </article>
         <article class="step">
-          <figure class="photo" data-src="photos/maraude.jpg" data-alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue"><img src="photos/maraude.jpg" alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue" decoding="async" loading="lazy"></figure>
+          <figure class="photo" data-src="photos/maraude.jpg" data-alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue"><img src="photos/maraude.jpg" alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue" decoding="async" loading="lazy" width="1600" height="1066"></figure>
           <div class="step-body">
             <div class="step-txt"><h3>La maraude</h3><p>Le soir, on part dans Paris et en Île-de-France. On distribue, on prend le temps de parler.</p></div>
             <span class="step-num">03</span>
           </div>
         </article>
-        <article class="step-stats" aria-label="Bilan du 13 septembre">
-          <p class="when">Le samedi 13 septembre, en chiffres.</p>
+        <article class="step-stats" aria-label="Bilan du 13 septembre 2025">
+          <p class="when">Le samedi 13 septembre 2025, en chiffres.</p>
           <div class="stat-row">
             <div class="stat"><b data-count="407">407</b><span>plats chauds</span></div>
             <div class="stat"><b data-count="255">255</b><span>gâteaux et cupcakes</span></div>
@@ -515,19 +531,19 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   <section class="gallery" aria-label="Photos de terrain">
     <div class="gallery-cols">
       <div class="gcol" data-speed="-0.12">
-        <figure class="photo g-tall" data-src="photos/galerie-1.jpg"><img src="photos/galerie-1.jpg" alt="" decoding="async" loading="lazy"></figure>
-        <figure class="photo g-wide" data-src="photos/galerie-2.jpg"><img src="photos/galerie-2.jpg" alt="" decoding="async" loading="lazy"></figure>
-        <figure class="photo g-tall" data-src="photos/galerie-7.jpg"><img src="photos/galerie-7.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-1.jpg"><img src="photos/galerie-1.jpg" alt="" decoding="async" loading="lazy" width="866" height="1300"></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-2.jpg"><img src="photos/galerie-2.jpg" alt="" decoding="async" loading="lazy" width="1300" height="929"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-7.jpg"><img src="photos/galerie-7.jpg" alt="" decoding="async" loading="lazy" width="866" height="1300"></figure>
       </div>
       <div class="gcol" data-speed="0.10">
-        <figure class="photo g-wide" data-src="photos/galerie-3.jpg"><img src="photos/galerie-3.jpg" alt="" decoding="async" loading="lazy"></figure>
-        <figure class="photo g-tall" data-src="photos/galerie-4.jpg" data-video="videos/galerie-4.mp4"><img src="photos/galerie-4.jpg" alt="" decoding="async" loading="lazy"><video src="videos/galerie-4.mp4" poster="photos/galerie-4.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
-        <figure class="photo g-wide" data-src="photos/galerie-9.jpg"><img src="photos/galerie-9.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-3.jpg"><img src="photos/galerie-3.jpg" alt="" decoding="async" loading="lazy" width="1300" height="866"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-4.jpg" data-video="videos/galerie-4.mp4"><img src="photos/galerie-4.jpg" alt="" decoding="async" loading="lazy" width="720" height="1280"><video src="videos/galerie-4.mp4" poster="photos/galerie-4.jpg" muted loop playsinline preload="none"></video></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-9.jpg"><img src="photos/galerie-9.jpg" alt="" decoding="async" loading="lazy" width="1300" height="866"></figure>
       </div>
       <div class="gcol" data-speed="-0.06">
-        <figure class="photo g-tall" data-src="photos/galerie-5.jpg"><img src="photos/galerie-5.jpg" alt="" decoding="async" loading="lazy"></figure>
-        <figure class="photo g-wide" data-src="photos/galerie-6.jpg"><img src="photos/galerie-6.jpg" alt="" decoding="async" loading="lazy"></figure>
-        <figure class="photo g-tall" data-src="photos/galerie-8.jpg"><img src="photos/galerie-8.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-5.jpg"><img src="photos/galerie-5.jpg" alt="" decoding="async" loading="lazy" width="1040" height="1300"></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-6.jpg"><img src="photos/galerie-6.jpg" alt="" decoding="async" loading="lazy" width="1300" height="866"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-8.jpg"><img src="photos/galerie-8.jpg" alt="" decoding="async" loading="lazy" width="866" height="1300"></figure>
       </div>
     </div>
   </section>
@@ -540,35 +556,35 @@ body::before,.nav{background:rgba(255,255,255,.8)}
         <li class="prog-item" data-open="false">
           <button aria-expanded="false"><span class="prog-name">Maraudes</span><span class="plus" aria-hidden="true"></span></button>
           <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-maraudes.jpg"><img src="photos/prog-maraudes.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <figure class="photo" data-src="photos/prog-maraudes.jpg"><img src="photos/prog-maraudes.jpg" alt="Maraude du soir dans Paris" decoding="async" loading="lazy" width="933" height="1400"></figure>
             <div><p>Chaque semaine, des repas chauds faits maison distribués aux personnes à la rue, dans Paris et en Île-de-France.</p><p>Un repas, mais surtout un moment d’échange.</p></div>
           </div></div></div>
         </li>
         <li class="prog-item" data-open="false">
           <button aria-expanded="false"><span class="prog-name">Café solidaire</span><span class="plus" aria-hidden="true"></span></button>
           <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-cafe.jpg"><img src="photos/prog-cafe.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <figure class="photo" data-src="photos/prog-cafe.jpg"><img src="photos/prog-cafe.jpg" alt="Le café solidaire" decoding="async" loading="lazy" width="1120" height="1400"></figure>
             <div><p>Un lieu ouvert à tous, à prix solidaires. 100 % des bénéfices reversés à l’association.</p><p>Café, crêpes, granita selon la saison, sodas. Jeux vidéo et télé pour les jeunes du quartier.</p></div>
           </div></div></div>
         </li>
         <li class="prog-item" data-open="false">
           <button aria-expanded="false"><span class="prog-name">Distributions alimentaires</span><span class="plus" aria-hidden="true"></span></button>
           <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-etudiants.jpg"><img src="photos/prog-etudiants.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <figure class="photo" data-src="photos/prog-etudiants.jpg"><img src="photos/prog-etudiants.jpg" alt="Distribution de colis alimentaires" decoding="async" loading="lazy" width="1120" height="1400"></figure>
             <div><p>Des colis alimentaires pour les familles, les étudiants, pour tous ceux qui en ont besoin, sur inscription. Nos produits, achetés ou issus de collectes, et les invendus des commerces.</p><p>Simple, rapide, sans jugement.</p></div>
           </div></div></div>
         </li>
         <li class="prog-item" data-open="false">
           <button aria-expanded="false"><span class="prog-name">Bénévolat</span><span class="plus" aria-hidden="true"></span></button>
           <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-benevolat.jpg"><img src="photos/prog-benevolat.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <figure class="photo" data-src="photos/prog-benevolat.jpg"><img src="photos/prog-benevolat.jpg" alt="Bénévoles en cuisine" decoding="async" loading="lazy" width="1400" height="1000"></figure>
             <div><p>En cuisine, en distribution, au café. Des collectes en magasin, des événements, de la coiffure et de la manucure solidaires.</p><p>Chacun vient avec ce qu’il sait faire.</p></div>
           </div></div></div>
         </li>
         <li class="prog-item" data-open="false">
           <button aria-expanded="false"><span class="prog-name">Textile solidaire</span><span class="plus" aria-hidden="true"></span></button>
           <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-textile.jpg"><img src="photos/prog-textile.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <figure class="photo" data-src="photos/prog-textile.jpg"><img src="photos/prog-textile.jpg" alt="Vêtements brodés de l’association" decoding="async" loading="lazy" width="1120" height="1400"></figure>
             <div><p>Des vêtements à l’image de l’association, brodés ou sérigraphiés. Chaque pièce vendue finance nos actions.</p><p>Porter le message, littéralement.</p></div>
           </div></div></div>
         </li>
@@ -584,8 +600,8 @@ body::before,.nav{background:rgba(255,255,255,.8)}
         <p class="film-sub">Le café, la cuisine, les distributions. Une année avec nous.</p>
         <button class="sound-btn" type="button" aria-pressed="false" hidden>Activer le son</button>
       </div>
-      <figure class="photo film-frame" data-src="photos/film.jpg" data-video="videos/film.mp4" data-alt="L’année 2025 d’O Cœur de la Rue"><img src="photos/film.jpg" alt="L’année 2025 d’O Cœur de la Rue" decoding="async" loading="lazy"><video src="videos/film.mp4" poster="photos/film.jpg" muted loop playsinline autoplay preload="metadata"></video>
-        <figcaption>videos/film.mp4</figcaption>
+      <figure class="photo film-frame" data-src="photos/film.jpg" data-video="videos/film.mp4" data-alt="L’année 2025 d’O Cœur de la Rue"><img src="photos/film.jpg" alt="L’année 2025 d’O Cœur de la Rue" decoding="async" loading="lazy" width="900" height="1600"><video src="videos/film.mp4" poster="photos/film.jpg" muted loop playsinline preload="none"></video>
+        
       </figure>
     </div>
   </section>
@@ -595,7 +611,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
     <blockquote>« Les 40 qui (re)créent du lien. »</blockquote>
     <cite>Laurent François, président, lauréat 2026 de l’Institut Choiseul et La Poste.</cite>
     <figure class="laureat-press">
-      <a href="https://www.choiseul-magazine.fr/2026/09/09/laurent-francois-o-coeur-de-la-rue-o-coeur-de-la-rue-est-nee-dune-mobilisation-familiale/" rel="noopener" target="_blank" aria-label="Lire l’article de Choiseul Magazine"><img src="photos/choiseul.jpg" alt="Choiseul Magazine : « O Cœur de la Rue est née d’une mobilisation familiale avant de devenir une aventure collective. »" loading="lazy"></a>
+      <a href="https://www.choiseul-magazine.fr/2026/09/09/laurent-francois-o-coeur-de-la-rue-o-coeur-de-la-rue-est-nee-dune-mobilisation-familiale/" rel="noopener" target="_blank" aria-label="Lire l’article de Choiseul Magazine"><img src="photos/choiseul.jpg" alt="Choiseul Magazine : « O Cœur de la Rue est née d’une mobilisation familiale avant de devenir une aventure collective. »" loading="lazy" width="1200" height="1200"></a>
     </figure>
     <ul class="proofs">
       <li><b>Lauréat 2026</b><span>Palmarès « Les 40 qui (re)créent du lien », Institut Choiseul et La Poste.</span><a href="https://www.choiseul-magazine.fr/2026/09/09/laurent-francois-o-coeur-de-la-rue-o-coeur-de-la-rue-est-nee-dune-mobilisation-familiale/" rel="noopener" target="_blank">Lire l’article Choiseul</a></li>
@@ -654,26 +670,26 @@ body::before,.nav{background:rgba(255,255,255,.8)}
     <div class="allies-in">
       <h2>Ils avancent avec nous.</h2>
       <ul class="allies-grid">
-        <li><img src="logos/ville-de-paris.png" alt="Ville de Paris" loading="lazy"></li>
-        <li><img src="logos/mairie-14.png" alt="Mairie du 14e" loading="lazy"></li>
-        <li><img src="logos/seine-saint-denis.png" alt="Seine-Saint-Denis" loading="lazy"></li>
-        <li><img src="logos/drihl.png" alt="Drihl" loading="lazy"></li>
-        <li><img src="logos/fondation-carrefour.png" alt="Fondation Carrefour" loading="lazy"></li>
-        <li><img src="logos/monoprix.png" alt="Monoprix" loading="lazy"></li>
-        <li><img src="logos/timberland.png" alt="Timberland" loading="lazy"></li>
-        <li><img src="logos/psg.png" alt="Paris Saint-Germain" loading="lazy"></li>
-        <li><img src="logos/rungis.png" alt="Rungis Marché international" loading="lazy"></li>
-        <li><img src="logos/dickies.png" alt="Dickies" loading="lazy"></li>
-        <li><img src="logos/shinzo.png" alt="Shinzo Paris" loading="lazy"></li>
-        <li><img src="logos/ligue-enseignement.png" alt="Ligue de l’enseignement" loading="lazy"></li>
+        <li><img src="logos/ville-de-paris.png" alt="Ville de Paris" loading="lazy" width="328" height="331"></li>
+        <li><img src="logos/mairie-14.png" alt="Mairie du 14e" loading="lazy" width="439" height="250"></li>
+        <li><img src="logos/seine-saint-denis.png" alt="Seine-Saint-Denis" loading="lazy" width="416" height="105"></li>
+        <li><img src="logos/drihl.png" alt="Drihl" loading="lazy" width="376" height="186"></li>
+        <li><img src="logos/fondation-carrefour.png" alt="Fondation Carrefour" loading="lazy" width="389" height="129"></li>
+        <li><img src="logos/monoprix.png" alt="Monoprix" loading="lazy" width="372" height="216"></li>
+        <li><img src="logos/timberland.png" alt="Timberland" loading="lazy" width="434" height="390"></li>
+        <li><img src="logos/psg.png" alt="Paris Saint-Germain" loading="lazy" width="338" height="336"></li>
+        <li><img src="logos/rungis.png" alt="Rungis Marché international" loading="lazy" width="438" height="136"></li>
+        <li><img src="logos/dickies.png" alt="Dickies" loading="lazy" width="384" height="227"></li>
+        <li><img src="logos/shinzo.png" alt="Shinzo Paris" loading="lazy" width="334" height="116"></li>
+        <li><img src="logos/ligue-enseignement.png" alt="Ligue de l’enseignement" loading="lazy" width="383" height="325"></li>
       </ul>
-      <a class="btn btn-line" href="partenaires.html">Tous nos partenaires</a>
+      <a class="btn btn-line" href="/partenaires">Tous nos partenaires</a>
     </div>
   </section>
 
   <!-- LA PORTE — le café la nuit -->
   <section class="door" aria-label="Le café associatif">
-    <figure class="photo door-photo" data-src="photos/porte.jpg" data-alt="La façade du café associatif, le soir"><img src="photos/porte.jpg" alt="La façade du café associatif, le soir" decoding="async" loading="lazy"></figure>
+    <figure class="photo door-photo" data-src="photos/porte.jpg" data-alt="La façade du café associatif, le soir"><img src="photos/porte.jpg" alt="La façade du café associatif, le soir" decoding="async" loading="lazy" width="1333" height="2000"></figure>
     <div class="door-txt">
       <p class="door-title">La porte est ouverte.</p>
       <p class="door-sub">8 rue du Général Humbert, Paris 14e.</p>
@@ -683,13 +699,13 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   <!-- REJOINDRE -->
   <section class="join" id="rejoindre">
     <div class="join-in">
-      <figure class="photo join-photo" data-src="photos/equipe.jpg" data-alt="L’équipe et les bénévoles d’O Cœur de la Rue"><img src="photos/equipe.jpg" alt="L’équipe et les bénévoles d’O Cœur de la Rue" decoding="async" loading="lazy"></figure>
+      <figure class="photo join-photo" data-src="photos/equipe.jpg" data-alt="L’équipe et les bénévoles d’O Cœur de la Rue"><img src="photos/equipe.jpg" alt="L’équipe et les bénévoles d’O Cœur de la Rue" decoding="async" loading="lazy" width="2000" height="1600"></figure>
       <h2>Rejoins le gang solidaire.</h2>
       <div class="join-side" id="don">
         <p>Une heure de ton temps, un don, un partenariat. Tout compte, et tout sert sur le terrain.</p>
         <div class="join-actions">
-          <a class="btn btn-red" href="dons.html">Faire un don</a>
-          <a class="btn btn-line" href="partenaires.html">Devenir partenaire</a>
+          <a class="btn btn-red" href="/dons">Faire un don</a>
+          <a class="btn btn-line" href="/partenaires">Devenir partenaire</a>
         </div>
       </div>
       <ul class="direct-grid join-grid">
@@ -705,11 +721,11 @@ body::before,.nav{background:rgba(255,255,255,.8)}
 <footer class="foot">
   <div class="foot-in">
     <div>
-      <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+      <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="642" height="160"></a>
       <p>8 rue du Général Humbert<br>75014 Paris</p>
     </div>
     <div>
-      <h4>Contact</h4>
+      <h2>Contact</h2>
       <ul>
         <li><a href="mailto:contact@ocoeurdelarue.org">contact@ocoeurdelarue.org</a></li>
         <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Demander une aide</a></li>
@@ -719,7 +735,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
       </ul>
     </div>
     <div>
-      <h4>Nous suivre</h4>
+      <h2>Nous suivre</h2>
       <ul>
         <li><a href="https://instagram.com/Ocoeur2larue" rel="noopener" target="_blank">Instagram</a></li>
         <li><a href="https://www.tiktok.com/@ocoeur2larue" rel="noopener" target="_blank">TikTok</a></li>
@@ -730,7 +746,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
       </ul>
     </div>
   </div>
-  <p class="foot-legal">© 2026 O Cœur de la Rue. Association loi 1901.</p>
+  <p class="foot-legal">© 2026 O Cœur de la Rue. Association loi 1901. <a href="/mentions-legales">Mentions légales et confidentialité</a></p>
 </footer>
 
 <script>
@@ -831,7 +847,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
     if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
     v.addEventListener('playing', () => { fig.dataset.hasVideo = '1'; });
     v.addEventListener('error', () => v.remove());
-    if (!reduce) v.play().catch(() => {});
+    if (!reduce && v.autoplay) v.play().catch(() => {});
   });
   if ('IntersectionObserver' in window) {
     const mio = new IntersectionObserver(es => es.forEach(e => {
