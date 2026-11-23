@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Faire un don — O Cœur de la Rue</title>
-<meta name="description" content="Ton don finance les repas chauds, les maraudes et le café solidaire d’O Cœur de la Rue. Reçu fiscal automatique.">
+<meta name="description" content="Don ponctuel ou mensuel : ton don finance les repas chauds, les maraudes et le café solidaire d’O Cœur de la Rue. Reçu fiscal automatique.">
 <link rel="canonical" href="https://www.ocoeurdelarue.org/dons">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -50,6 +50,8 @@
 .give-card p{flex:1;max-width:34ch}
 .give-main{background:var(--red);color:#fff}
 .give-main .btn{background:#fff;color:#000;align-self:flex-start}
+.give-main .tag{align-self:flex-start;background:#fff;color:var(--red);font-weight:800;font-size:.8125rem;letter-spacing:.02em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.give-main p.give-note{flex:0;font-weight:700}
 .give-alt{border:1.5px solid rgba(255,255,255,.25)}
 .give-alt .btn{align-self:flex-start}
 .tax{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
@@ -124,12 +126,14 @@
   <section class="dark" id="donner">
     <div class="wrap">
       <h2 class="h2">Donner.</h2>
-      <p class="lead">Par HelloAsso ou par PayPal, comme tu préfères.</p>
+      <p class="lead">Une fois ou tous les mois, par HelloAsso ou par PayPal.</p>
       <div class="give">
         <div class="give-card give-main">
-          <h3>Avec HelloAsso</h3>
-          <p>Ton soutien passe par l’adhésion 2026. Paiement sécurisé, et ton reçu fiscal arrive automatiquement par mail.</p>
-          <a class="btn" href="https://www.helloasso.com/associations/o-coeur-de-la-rue/adhesions/adhesion-o-coeur-de-la-rue-2026" rel="noopener" target="_blank">Soutenir sur HelloAsso</a>
+          <span class="tag">Recommandé</span>
+          <h3>Don mensuel ou ponctuel</h3>
+          <p>Choisis ton montant, une fois ou chaque mois. Le don mensuel, même petit, nous permet de prévoir les courses et les maraudes. Paiement sécurisé, reçu fiscal envoyé automatiquement par mail.</p>
+          <p class="give-note">10&nbsp;€ par mois te reviennent à 3,40&nbsp;€ après réduction d’impôt.</p>
+          <a class="btn" href="https://www.helloasso.com/associations/o-coeur-de-la-rue/formulaires/5" rel="noopener" target="_blank">Faire un don sur HelloAsso</a>
         </div>
         <div class="give-card give-alt">
           <h3>Avec PayPal</h3>
@@ -137,7 +141,8 @@
           <a class="btn btn-line" href="https://www.paypal.com/donate?hosted_button_id=HNABWMJ9SV59Q" rel="noopener" target="_blank">Donner sur PayPal</a>
         </div>
       </div>
-      <p class="other">Des invendus, du matériel, des vêtements ? <a href="mailto:contact@ocoeurdelarue.org?subject=Don%20en%20nature">Écris-nous</a>, on vient les chercher quand on peut.</p>
+      <p class="other">Des invendus, du matériel, des vêtements&nbsp;? <a href="mailto:contact@ocoeurdelarue.org?subject=Don%20en%20nature">Écris-nous</a>, on vient les chercher quand on peut.</p>
+      <p class="other">Tu veux aussi devenir membre de l’association&nbsp;? <a href="https://www.helloasso.com/associations/o-coeur-de-la-rue/adhesions/adhesion-o-coeur-de-la-rue-2026" rel="noopener" target="_blank">Adhérer pour 2026</a>.</p>
     </div>
   </section>
 
