@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O Cœur de la Rue — Solidarité de terrain à Paris</title>
+<meta name="description" content="Association solidaire créée en 2019 à Paris 14e. Maraudes, repas chauds, café solidaire, distributions alimentaires.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS — change la couleur rouge ici ============ */
+:root{
+  --red:#FF0000;
+  --black:#000000;
+  --white:#FFFFFF;
+  --paper:#FFFFFF;      /* fond des sections claires */
+  --ink:#000000;        /* texte des sections claires */
+  --muted:#5E5E5E;
+  --line:rgba(0,0,0,.14);
+  --night-muted:#A3A3A3;
+  --display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --text:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.24,1);
+  --nav-h:56px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{background:var(--black);color:var(--white);font-family:var(--text);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+
+/* ============ NAV (verre dépoli façon Apple) ============ */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(0,0,0,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:var(--nav-h);background:rgba(0,0,0,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{max-width:1200px;margin:0 auto;height:100%;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.06rem;letter-spacing:-.035em;text-decoration:none;white-space:nowrap}
+.logo span{color:var(--red)}
+.logo img{display:block;height:40px;width:auto}
+@media (max-width:899px){.logo img{height:34px}}
+.foot .logo img{height:44px}
+
+.nav-links{display:flex;gap:28px;list-style:none;font-size:.875rem}
+.nav-links a{text-decoration:none;opacity:.78;transition:opacity .25s}
+.nav-links a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 .9375rem/1 var(--text);text-decoration:none;border-radius:999px;padding:12px 22px;transition:transform .35s var(--ease),background .25s,color .25s;cursor:pointer;border:0}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#D60000}
+.btn-small{padding:8px 16px;font-size:.8125rem}
+.btn-line{border:1.5px solid currentColor;background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.menu-btn{display:none;background:none;border:0;color:#fff;width:40px;height:40px;cursor:pointer}
+.menu-btn span{display:block;width:18px;height:1.5px;background:currentColor;margin:5px auto;transition:transform .35s var(--ease)}
+.nav[data-open="true"] .menu-btn span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.nav[data-open="true"] .menu-btn span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.mobile-menu{display:none}
+
+/* ============ PHOTOS — remplace les placeholders ============
+   Mets simplement une balise <img src="photos/xxx.jpg" alt="…"> dans chaque .photo */
+.photo{position:relative;overflow:hidden;background:#1d1d1d;
+  background-image:
+    radial-gradient(120% 80% at 30% 20%,rgba(255,255,255,.10),transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* Coins arrondis fiables (Safari perd l’arrondi quand le parent bouge en parallaxe) */
+.photo,.step,.press-video,.film-frame,.hero-frame{-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);isolation:isolate}
+.photo figcaption{position:absolute;left:16px;bottom:14px;font-size:.75rem;color:rgba(255,255,255,.55);z-index:1}
+.photo:has(img) figcaption{display:none}
+
+/* ============ HERO — séquence épinglée au scroll ============ */
+.hero{position:relative;height:280vh;background:var(--black)}
+.hero-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center}
+.hero-frame{position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--black);transform:scale(calc(.46 + .54 * var(--p,0)));border-radius:calc(28px * (1 - var(--p,0)));will-change:transform}
+.hero-frame .photo{height:100%}
+.hero-frame::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(0,0,0,calc(.35 + .3 * var(--p,0)))}
+.hero-words{position:relative;z-index:2;width:100%;height:1.1em;font-family:var(--display);font-weight:900;font-size:clamp(2.87rem,10.2vw,9.02rem);line-height:1;letter-spacing:-.035em;text-align:center;white-space:nowrap}
+.hero-word{position:absolute;inset:0;opacity:0;transform:translateY(.25em) scale(.96);filter:blur(12px);transition:opacity .7s var(--ease),transform .9s var(--ease),filter .7s var(--ease)}
+.hero-word.is-active{opacity:1;transform:none;filter:none}
+.hero-foot{position:absolute;z-index:2;left:0;right:0;bottom:max(32px,env(safe-area-inset-bottom,0px));text-align:center;padding:0 22px}
+.hero-sub{font-size:clamp(1.0625rem,2vw,1.375rem);font-weight:500;opacity:clamp(0, calc((var(--p,0) - .72) * 4), 1);transform:translateY(calc(12px * (1 - clamp(0, calc((var(--p,0) - .72) * 4), 1))))}
+.hero-hint{font-size:.8125rem;color:var(--night-muted);margin-top:10px;opacity:clamp(0, calc(1 - var(--p,0) * 6), 1)}
+.hero-hint::after{content:"";display:block;width:1px;height:28px;margin:10px auto 0;background:linear-gradient(#fff,transparent);animation:drip 2.2s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ============ INTRO ============ */
+.intro{background:var(--black);padding:clamp(100px,16vw,200px) 22px}
+.intro p{max-width:22ch;margin:0 auto;font-family:var(--display);font-weight:800;font-size:clamp(1.84rem,4.59vw,3.69rem);line-height:1.02;text-align:center;letter-spacing:-.035em}
+.intro p .dim{color:#4a4a4a;transition:color .6s var(--ease)}
+.intro p .dim.lit{color:#fff}
+
+/* ============ UN SAMEDI — défilement horizontal ============ */
+.samedi{position:relative;background:var(--black)}
+.samedi-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.samedi-head{max-width:1200px;width:100%;margin:0 auto 28px;padding:0 22px;display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+.samedi-head h2{font-family:var(--display);font-weight:800;font-size:clamp(1.64rem,3.28vw,2.67rem);line-height:1;letter-spacing:-.035em}
+.samedi-head p{color:var(--night-muted);font-size:.9375rem;max-width:34ch;text-align:right}
+.samedi-track{display:flex;gap:20px;padding:0 max(22px,calc((100vw - 1200px) / 2 + 22px));will-change:transform}
+.step{flex:0 0 min(72vw,820px);height:min(62vh,560px);border-radius:26px;position:relative;overflow:hidden}
+.step .photo{position:absolute;inset:0}
+.step .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.82))}
+.step-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(22px,3vw,40px);display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.step-num{font-family:var(--display);font-weight:900;font-size:clamp(2.87rem,5.74vw,4.92rem);line-height:.8;color:var(--red);letter-spacing:-.035em}
+.step-txt h3{font-family:var(--display);font-weight:800;font-size:clamp(1.64rem,3.28vw,2.87rem);line-height:1;margin-bottom:8px;letter-spacing:-.035em}
+.step-txt p{max-width:38ch;color:#d6d6d6;font-size:1rem}
+.step-stats{flex:0 0 min(72vw,820px);height:min(62vh,560px);border-radius:26px;background:var(--red);color:#fff;padding:clamp(26px,3.4vw,48px);display:flex;flex-direction:column;justify-content:space-between}
+.step-stats .when{font-size:1rem;font-weight:500}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.46rem,5.74vw,5.33rem);line-height:.85;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.stat span{display:block;margin-top:10px;font-size:.9375rem;line-height:1.35}
+
+/* ============ IMPACT ============ */
+.impact{background:var(--paper);color:var(--ink);padding:clamp(100px,14vw,180px) 22px}
+.impact-in{max-width:1200px;margin:0 auto}
+.impact-main{text-align:center}
+.impact-main small{display:block;font-size:clamp(1.125rem,2vw,1.5rem);font-weight:500;color:var(--muted)}
+.impact-main strong{display:block;font-family:var(--display);font-weight:900;font-size:clamp(5.74rem,21.3vw,18rem);line-height:.82;letter-spacing:-.035em;margin:.08em 0 .1em}
+.impact-main p{font-size:clamp(1.25rem,2.4vw,1.75rem);font-weight:500}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line)}
+.impact-grid div{padding:28px 28px 0 0}
+.impact-grid div{border-bottom:1px solid var(--line);padding-bottom:28px}
+.impact-grid div:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.impact-grid b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(2.05rem,3.77vw,3.28rem);line-height:1;letter-spacing:-.035em}
+.impact-grid span{display:block;margin-top:8px;color:var(--muted);max-width:28ch}
+.impact-grid b span{display:inline;margin:0;color:inherit}
+.impact-grid b{white-space:nowrap}
+
+/* ============ PROGRAMMES ============ */
+.prog{background:var(--paper);color:var(--ink);padding:0 22px clamp(100px,14vw,180px)}
+.prog-in{max-width:1200px;margin:0 auto}
+.prog h2{font-family:var(--display);font-weight:800;font-size:clamp(2.05rem,4.92vw,4.1rem);line-height:.95;margin-bottom:clamp(36px,5vw,60px);letter-spacing:-.035em}
+.prog-list{list-style:none;border-top:1px solid var(--line)}
+.prog-item{border-bottom:1px solid var(--line)}
+.prog-item button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:26px 0;position:relative}
+.prog-item button:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.prog-name{display:block;font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,3.28vw,2.67rem);line-height:1;transition:transform .5s var(--ease);letter-spacing:-.035em}
+.prog-item button:hover .prog-name{transform:translateX(10px)}
+.prog-tag{font-size:.8125rem;font-weight:500;color:var(--muted);margin-left:14px;font-family:var(--text);vertical-align:middle}
+.plus{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);position:relative;transition:background .3s,border-color .3s,transform .5s var(--ease)}
+.plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.prog-item[data-open="true"] .plus{background:var(--red);border-color:var(--red);color:#fff;transform:rotate(45deg)}
+.prog-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.prog-item[data-open="true"] .prog-panel{grid-template-rows:1fr}
+.prog-panel > div{overflow:hidden}
+.prog-panel-in{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,56px);padding-bottom:34px}
+.prog-panel .photo{aspect-ratio:4/3;border-radius:18px}
+.photo[data-src$="prog-maraudes.jpg"] img{object-position:center 25%}
+.photo[data-src$="prog-etudiants.jpg"] img{object-position:center 30%}
+:where(h1,h2,h3,p,strong,b) small{letter-spacing:normal}
+.prog-panel p{font-size:1.125rem;max-width:44ch}
+.prog-panel p + p{margin-top:14px;color:var(--muted);font-size:1rem}
+
+/* ============ RECONNAISSANCE ============ */
+.laureat{background:var(--black);padding:clamp(100px,14vw,170px) 22px;text-align:center}
+.laureat blockquote{max-width:20ch;text-wrap:balance;margin:0 auto;font-family:var(--display);font-weight:800;font-size:clamp(1.84rem,4.43vw,3.69rem);line-height:1.02;letter-spacing:-.035em}
+.laureat cite{display:block;margin-top:26px;font-style:normal;color:var(--night-muted);font-size:1rem}
+
+/* ============ ACCÈS DIRECTS ============ */
+.direct{background:var(--black);padding:clamp(100px,14vw,170px) 22px}
+.direct-in{max-width:1200px;margin:0 auto}
+.direct h2{font-family:var(--display);font-weight:900;font-size:clamp(2.46rem,5.74vw,4.92rem);line-height:1;letter-spacing:-.035em}
+.direct-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(40px,6vw,64px)}
+.direct-grid a{height:100%;display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:22px;background:#161616;text-decoration:none;transition:background .25s}
+.direct-grid a:hover{background:#222}
+.direct-grid li:first-child a{background:var(--red)}
+.direct-grid li:first-child a:hover{background:#D60000}
+.direct-grid b{font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,1.97vw,1.84rem);line-height:1;letter-spacing:-.035em}
+.direct-grid span{flex:1;color:#cfcfcf;font-size:.9375rem}
+.direct-grid li:first-child span{color:#fff}
+.direct-grid i{font-style:normal;font-weight:600;font-size:.875rem;text-decoration:underline;text-underline-offset:3px}
+
+/* ============ REJOINDRE ============ */
+.join{background:var(--paper);color:var(--ink);padding:clamp(100px,14vw,170px) 22px}
+.join-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:end}
+.join h2{font-family:var(--display);font-weight:900;font-size:clamp(2.46rem,6.56vw,5.74rem);line-height:1;letter-spacing:-.035em}
+.join-side p{font-size:1.1875rem;max-width:36ch;margin-bottom:28px}
+.join-actions{display:flex;flex-wrap:wrap;gap:12px}
+
+.join-photo{grid-column:1/-1;aspect-ratio:16/10;border-radius:26px;margin-bottom:clamp(20px,4vw,40px)}
+.laureat-photos{display:flex;justify-content:center;gap:16px;max-width:860px;margin:48px auto 0}
+.proofs{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1100px;margin:64px auto 0;text-align:left}
+.proofs li{border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.proofs b{font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,2.13vw,1.84rem);line-height:1;letter-spacing:-.035em}
+.proofs span{flex:1;color:var(--night-muted)}
+.proofs a{font-size:.875rem;font-weight:600;text-underline-offset:3px}
+.laureat-press{max-width:520px;margin:56px auto 0}
+.laureat-press img{width:100%;height:auto;border-radius:22px}
+.laureat-press blockquote{max-width:none;font-family:var(--text);font-weight:500;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.35;color:#fff;text-wrap:balance}
+.laureat-press figcaption{margin-top:14px;font-size:.875rem;color:var(--night-muted)}
+.laureat-photo{flex:1 1 0;max-width:420px;aspect-ratio:4/5;border-radius:22px}
+
+/* ============ LOOPSIDER ============ */
+.press{background:var(--paper);color:var(--ink);padding:clamp(100px,14vw,170px) 22px}
+.press-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:clamp(40px,7vw,110px);align-items:center}
+.press-txt{max-width:36rem}
+.press-sub{max-width:30ch}
+.press-title{font-family:var(--display);font-weight:900;font-size:clamp(2.46rem,5.74vw,4.92rem);line-height:1;letter-spacing:-.035em}
+.press-sub{margin-top:20px;font-size:1.1875rem;color:var(--muted)}
+.press-video{position:relative;height:min(76vh,780px);aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#111;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.press-video video{width:100%;height:100%;object-fit:cover;display:block}
+.press-play{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;font:600 .9375rem/1 var(--text);color:#fff;background:var(--red);border:0;border-radius:999px;padding:14px 22px 14px 18px;white-space:nowrap;cursor:pointer;box-shadow:0 10px 30px rgba(255,0,0,.4);transition:transform .35s var(--ease),background .25s}
+.press-play:hover{background:#D60000;transform:translateX(-50%) scale(1.04)}
+.press-play svg{width:20px;height:20px}
+.press-video.is-playing .press-play{opacity:0;pointer-events:none}
+.press-credit{grid-column:2;justify-self:center;margin-top:14px;font-size:.8125rem;color:var(--muted)}
+
+/* ============ SCIENCES PO ============ */
+.spo{background:var(--paper);color:var(--ink);padding:0 22px clamp(100px,14vw,170px)}
+.spo-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,640px) 1fr;column-gap:clamp(40px,6vw,90px);align-items:center}
+.spo-video{height:auto;width:100%;aspect-ratio:16/9;border-radius:26px}
+.spo-credit{margin-top:18px;font-size:.875rem;color:var(--muted);max-width:40ch}
+
+/* ============ PARTENAIRES (accueil) ============ */
+.allies{background:var(--paper);color:var(--ink);padding:0 22px clamp(100px,14vw,170px)}
+.allies-in{max-width:1100px;margin:0 auto;border-top:1px solid var(--line);padding-top:clamp(70px,10vw,120px);text-align:center}
+.allies h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,4.92vw,4.1rem);line-height:1;letter-spacing:-.035em}
+.allies-grid{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:clamp(40px,6vw,64px) 0}
+.allies-grid li{position:relative;background:#fff;border-radius:16px;aspect-ratio:3/2;overflow:hidden}
+.allies-grid img{position:absolute;inset:16%;width:68%;height:68%;max-width:none;object-fit:contain}
+
+/* ============ LA PORTE ============ */
+.door{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:var(--black)}
+.door-photo{position:absolute;inset:0;transform:scale(calc(1.12 - .12 * var(--d,0)));will-change:transform}
+.door-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.25) 55%,transparent 100%)}
+.door-txt{position:absolute;z-index:2;left:max(22px,calc((100vw - 1200px) / 2 + 22px));bottom:clamp(50px,10vh,110px);right:22px}
+.door-title{max-width:12ch}
+.door-title{font-family:var(--display);font-weight:900;font-size:clamp(2.46rem,6.56vw,5.74rem);line-height:1;letter-spacing:-.035em}
+.door-sub{margin-top:16px;color:#d6d6d6;font-size:1.0625rem}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--black);color:var(--night-muted);padding:60px 22px 40px;font-size:.875rem}
+.foot-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+.foot .logo{color:#fff;display:inline-block;margin-bottom:10px}
+.foot h4{color:#fff;font-weight:600;font-size:.875rem;margin-bottom:10px}
+.foot ul{list-style:none;display:grid;gap:6px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff}
+.foot-legal{max-width:1200px;margin:44px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:.75rem}
+
+/* ============ MÉDIAS ============ */
+.photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo video{opacity:0;transition:opacity .8s var(--ease)}
+.photo[data-has-video] video{opacity:1}
+.photo figcaption{display:none}
+
+/* ============ GALERIE ============ */
+.gallery{background:var(--paper);padding:100px 22px clamp(100px,14vw,180px);margin-top:-100px;overflow:hidden}
+.gallery-cols{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.gcol{display:grid;gap:16px;will-change:transform}
+.gcol:nth-child(2){margin-top:90px}
+.gallery .photo{border-radius:20px}
+.g-tall{aspect-ratio:3/4}
+.g-wide{aspect-ratio:4/3}
+
+/* ============ FILM (format vertical) ============ */
+.film{position:relative;height:200vh;background:var(--black)}
+.film-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:clamp(40px,7vw,110px);padding:calc(var(--nav-h) + 20px) 22px 30px}
+.film-frame{flex:0 0 auto;height:min(80vh,860px);aspect-ratio:9/16;border-radius:30px;transform:scale(calc(.84 + .16 * var(--f,0))) rotate(calc(-3deg * (1 - var(--f,0))));will-change:transform;box-shadow:0 40px 120px rgba(255,0,0,calc(.28 * var(--f,0)))}
+.film-ui{max-width:30ch;display:flex;flex-direction:column;align-items:flex-start;gap:16px;opacity:clamp(0, calc(var(--f,0) * 2.2), 1);transform:translateX(calc(-30px * (1 - clamp(0, calc(var(--f,0) * 2.2), 1))))}
+.film-title{font-family:var(--display);font-weight:800;font-size:clamp(2.05rem,4.1vw,3.69rem);line-height:.95;letter-spacing:-.035em}
+.film-sub{color:var(--night-muted);font-size:1.0625rem}
+.sound-btn{font:600 .875rem/1 var(--text);color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:12px 20px;cursor:pointer;transition:background .25s,border-color .25s}
+.sound-btn:hover{background:rgba(255,255,255,.24)}
+.sound-btn[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 899px){
+  .nav-links,.nav .btn-small{display:none}
+  .menu-btn{display:block}
+  .mobile-menu{display:block;position:fixed;inset:calc(var(--nav-h) + env(safe-area-inset-top,0px)) 0 0;background:rgba(0,0,0,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:30px 22px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;z-index:49}
+  .nav[data-open="true"] + .mobile-menu{opacity:1;visibility:visible}
+  .mobile-menu ul{list-style:none;display:grid;gap:4px}
+  .mobile-menu a:not(.btn){display:block;font-family:var(--display);font-weight:800;font-size:1.91rem;text-decoration:none;padding:6px 0;letter-spacing:-.035em}
+  .mobile-menu .btn{margin-top:24px}
+
+  .samedi{height:auto !important}
+  .samedi-sticky{position:static;height:auto;padding:90px 0}
+  .samedi-head{flex-direction:column;align-items:flex-start}
+  .samedi-head p{text-align:left}
+  .samedi-track{flex-direction:column;transform:none !important;padding:0 16px;gap:14px}
+  .step,.step-stats{flex:none;width:100%;height:auto;min-height:440px}
+  .stat-row{grid-template-columns:1fr;gap:26px;margin-top:30px}
+  .step-body{flex-direction:column;align-items:flex-start}
+
+  .impact-grid{grid-template-columns:1fr}
+  .impact-grid div,.impact-grid div:not(:nth-child(3n+1)){padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .prog-panel-in{grid-template-columns:1fr}
+  .prog-tag{display:block;margin:8px 0 0}
+  .join-in{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .hero-frame{grid-template-columns:1fr;gap:0}
+  .hero-frame .photo:nth-child(n+2){display:none}
+  .film{height:auto}
+  .film-sticky{position:relative;height:auto;flex-direction:column;padding:90px 16px;gap:28px}
+  .film-frame{height:auto;width:100%;max-width:440px;transform:none;box-shadow:none;border-radius:22px}
+  .film-ui{opacity:1;transform:none;align-items:center;text-align:center}
+  .proofs{grid-template-columns:1fr}
+  .spo-in{grid-template-columns:1fr;row-gap:30px}
+  .spo-txt{text-align:center}
+  .spo-txt .press-sub,.spo-credit{margin-left:auto;margin-right:auto}
+  .direct-grid{grid-template-columns:1fr}
+  .press-in{grid-template-columns:1fr;row-gap:30px}
+  .press-txt{text-align:center;margin:0 auto}
+  .press-video{height:auto;width:100%;max-width:420px;margin:0 auto}
+  .press-credit{grid-column:1;margin-top:0}
+  .allies-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .gallery-cols{grid-template-columns:1fr 1fr;gap:10px}
+  .gcol{gap:10px}
+  .gcol:nth-child(2){margin-top:50px}
+  .gcol:nth-child(3){display:none}
+  .gallery .photo{border-radius:14px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .hero{height:auto}
+  .hero-sticky{position:relative;min-height:100vh}
+  .hero-frame{transform:none;border-radius:0}
+  .hero-words{height:auto;font-size:clamp(2.75rem,11vw,8rem)}
+  .hero-word{position:relative;display:block;opacity:1;transform:none;filter:none}
+  .hero-sub{opacity:1;transform:none}
+  .hero-hint{display:none}
+  .intro p .dim{color:#fff}
+  .film{height:auto}
+  .film-sticky{position:relative}
+  .film-frame{transform:none}
+  .film-ui{opacity:1;transform:none}
+  .gcol{transform:none !important}
+  .door-photo{transform:none}
+}
+
+
+/* ============ ILS NOUS ONT FILMÉS ============ */
+.media{background:#fff;color:var(--ink);padding:clamp(100px,14vw,170px) 22px}
+.media-in{max-width:1100px;margin:0 auto}
+.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);align-items:start;margin-top:clamp(40px,6vw,64px)}
+.media-card h3{margin-top:22px;font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em}
+.media-card p{margin-top:8px;color:var(--muted);max-width:40ch}
+.media-card .media-credit{font-size:.8125rem}
+.media .press-video{height:auto;width:100%}
+.media .spo-video{height:auto;width:100%}
+.join-grid{grid-column:1/-1;margin-top:clamp(30px,5vw,56px)}
+.join .join-grid a{background:#fff}
+.join .join-grid a:hover{background:#fafafa}
+@media (max-width:899px){
+  .media-grid{grid-template-columns:1fr}
+  .media-card{width:100%;max-width:360px;margin:0 auto}
+}
+/* ============ THÈME CLAIR FAÇON APPLE ============ */
+:root{--ink:#1d1d1f;--muted:#6e6e73;--soft:#F5F5F7;--line:rgba(0,0,0,.1);--night-muted:#6e6e73}
+body{background:#fff;color:var(--ink)}
+body::before,.nav{background:rgba(255,255,255,.8)}
+.nav{border-bottom:1px solid rgba(0,0,0,.08);color:var(--ink)}
+.menu-btn{color:var(--ink)}
+.photo{background:#e8e8ed}
+.btn-line{color:var(--ink)}
+.foot{background:var(--soft);color:var(--muted)}
+.foot .logo,.foot h4,.foot a:hover{color:var(--ink)}
+.foot-legal{border-top:1px solid var(--line)}
+@media (max-width:899px){
+  .mobile-menu{background:rgba(255,255,255,.97);color:var(--ink)}
+}
+
+.intro{background:#fff;color:var(--ink)}
+.intro p .dim{color:#d2d2d7}
+.intro p .dim.lit{color:var(--ink)}
+.samedi{background:var(--soft);color:var(--ink)}
+.samedi-head p{color:var(--muted)}
+.step{color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.laureat{background:var(--soft);color:var(--ink)}
+.laureat cite{color:var(--muted)}
+.proofs li{background:#fff;border:0;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.proofs span{color:var(--muted)}
+.direct{background:#fff;color:var(--ink)}
+.direct-grid a{background:var(--soft)}
+.direct-grid a:hover{background:#ebebf0}
+.direct-grid span{color:var(--muted)}
+.direct-grid li:first-child a{color:#fff}
+.direct-grid li:first-child span{color:#fff}
+.allies-grid li{box-shadow:inset 0 0 0 1px rgba(0,0,0,.07)}
+.press-video{box-shadow:0 30px 70px rgba(0,0,0,.18)}
+.spo{background:#fff}
+.join{background:var(--soft)}
+.hero,.film,.door{color:#fff}
+.hero-hint{color:rgba(255,255,255,.75)}
+@media (max-width:899px){
+  .intro p .dim{color:var(--ink)}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" data-open="false" aria-label="Navigation principale">
+  <div class="nav-in">
+    <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+    <ul class="nav-links">
+      <li><a href="#terrain">Le terrain</a></li>
+      <li><a href="#programmes">Programmes</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="benevole.html">Bénévolat</a></li>
+      <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+    </ul>
+    <a class="btn btn-red btn-small" href="dons.html">Faire un don</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="#terrain">Le terrain</a></li>
+    <li><a href="#programmes">Programmes</a></li>
+    <li><a href="partenaires.html">Partenaires</a></li>
+    <li><a href="benevole.html">Bénévolat</a></li>
+    <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+  </ul>
+  <a class="btn btn-red" href="dons.html">Faire un don</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="On cuisine. On distribue. On accueille. On partage. On agit.">
+    <div class="hero-sticky">
+      <div class="hero-frame">
+        <figure class="photo" data-src="photos/hero-1.jpg" data-video="videos/hero-1.mp4" data-alt="La cuisine du samedi"><img src="photos/hero-1.jpg" alt="La cuisine du samedi" decoding="async"><video src="videos/hero-1.mp4" poster="photos/hero-1.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+        <figure class="photo" data-src="photos/hero-2.jpg" data-video="videos/hero-2.mp4" data-alt="Récolte chez un maraîcher"><img src="photos/hero-2.jpg" alt="Récolte chez un maraîcher" decoding="async"><video src="videos/hero-2.mp4" poster="photos/hero-2.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+        <figure class="photo" data-src="photos/hero-3.jpg" data-video="videos/hero-3.mp4" data-alt="Le café solidaire"><img src="photos/hero-3.jpg" alt="Le café solidaire" decoding="async"><video src="videos/hero-3.mp4" poster="photos/hero-3.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+      </div>
+      <h1 class="hero-words">
+        <span class="hero-word is-active">On cuisine.</span>
+        <span class="hero-word">On distribue.</span>
+        <span class="hero-word">On accueille.</span>
+        <span class="hero-word">On partage.</span>
+        <span class="hero-word">On agit.</span>
+      </h1>
+      <div class="hero-foot">
+        <p class="hero-sub">Association solidaire. Paris, depuis 2019.</p>
+        <p class="hero-hint">Défiler</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" aria-label="Qui nous sommes">
+    <p data-words>Des repas chauds. Des maraudes. Un café ouvert à tous. Pour les personnes à la rue, les étudiants, les familles.</p>
+  </section>
+
+  <!-- UN SAMEDI -->
+  <section class="samedi" id="terrain">
+    <div class="samedi-sticky">
+      <div class="samedi-head">
+        <h2>Un samedi avec nous.</h2>
+        <p>Chaque semaine, la même boucle. Du café du matin à la maraude du soir.</p>
+      </div>
+      <div class="samedi-track">
+        <article class="step">
+          <figure class="photo" data-src="photos/cafe.jpg" data-alt="La façade du café associatif"><img src="photos/cafe.jpg" alt="La façade du café associatif" decoding="async" loading="lazy"></figure>
+          <div class="step-body">
+            <div class="step-txt"><h3>Le café</h3><p>Café, crêpes, sodas à prix solidaires. Tout ce qui est gagné repart dans les actions.</p></div>
+            <span class="step-num">01</span>
+          </div>
+        </article>
+        <article class="step">
+          <figure class="photo" data-src="photos/cuisine.jpg" data-alt="Un bénévole coupe des poivrons en cuisine"><img src="photos/cuisine.jpg" alt="Un bénévole coupe des poivrons en cuisine" decoding="async" loading="lazy"></figure>
+          <div class="step-body">
+            <div class="step-txt"><h3>La cuisine</h3><p>On cuisine les invendus récupérés. Des fruits et légumes bio quand on peut.</p></div>
+            <span class="step-num">02</span>
+          </div>
+        </article>
+        <article class="step">
+          <figure class="photo" data-src="photos/maraude.jpg" data-alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue"><img src="photos/maraude.jpg" alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue" decoding="async" loading="lazy"></figure>
+          <div class="step-body">
+            <div class="step-txt"><h3>La maraude</h3><p>Le soir, on part dans Paris et en Île-de-France. On distribue, on prend le temps de parler.</p></div>
+            <span class="step-num">03</span>
+          </div>
+        </article>
+        <article class="step-stats" aria-label="Bilan du 13 septembre">
+          <p class="when">Le samedi 13 septembre, en chiffres.</p>
+          <div class="stat-row">
+            <div class="stat"><b data-count="407">407</b><span>plats chauds</span></div>
+            <div class="stat"><b data-count="255">255</b><span>gâteaux et cupcakes</span></div>
+            <div class="stat"><b data-count="165.38" data-dec="2">165,38</b><span>euros investis, hors cupcakes</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact" id="impact">
+    <div class="impact-in">
+      <div class="impact-main">
+        <small>En 2025</small>
+        <strong><span data-count="14859">14 859</span></strong>
+        <p>repas chauds préparés et distribués.</p>
+      </div>
+      <div class="impact-grid">
+        <div><b><span data-count="9000">9 000</span>&nbsp;h</b><span>de bénévolat.</span></div>
+        <div><b><span data-count="4">4</span>&nbsp;t</b><span>de produits alimentaires redistribués.</span></div>
+        <div><b><span data-count="22000">22 000</span>&nbsp;€</b><span>d’invendus alimentaires reçus.</span></div>
+        <div><b><span data-count="400">400</span></b><span>étudiants accompagnés.</span></div>
+        <div><b><span data-count="250">250</span></b><span>foyers soutenus.</span></div>
+        <div><b><span data-count="52">52</span></b><span>samedis d’action et de maraude.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE — colonnes en parallaxe -->
+  <section class="gallery" aria-label="Photos de terrain">
+    <div class="gallery-cols">
+      <div class="gcol" data-speed="-0.12">
+        <figure class="photo g-tall" data-src="photos/galerie-1.jpg"><img src="photos/galerie-1.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-2.jpg"><img src="photos/galerie-2.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-7.jpg"><img src="photos/galerie-7.jpg" alt="" decoding="async" loading="lazy"></figure>
+      </div>
+      <div class="gcol" data-speed="0.10">
+        <figure class="photo g-wide" data-src="photos/galerie-3.jpg"><img src="photos/galerie-3.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-4.jpg" data-video="videos/galerie-4.mp4"><img src="photos/galerie-4.jpg" alt="" decoding="async" loading="lazy"><video src="videos/galerie-4.mp4" poster="photos/galerie-4.jpg" muted loop playsinline autoplay preload="metadata"></video></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-9.jpg"><img src="photos/galerie-9.jpg" alt="" decoding="async" loading="lazy"></figure>
+      </div>
+      <div class="gcol" data-speed="-0.06">
+        <figure class="photo g-tall" data-src="photos/galerie-5.jpg"><img src="photos/galerie-5.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-wide" data-src="photos/galerie-6.jpg"><img src="photos/galerie-6.jpg" alt="" decoding="async" loading="lazy"></figure>
+        <figure class="photo g-tall" data-src="photos/galerie-8.jpg"><img src="photos/galerie-8.jpg" alt="" decoding="async" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMMES -->
+  <section class="prog" id="programmes">
+    <div class="prog-in">
+      <h2>Ce qu’on fait.</h2>
+      <ul class="prog-list">
+        <li class="prog-item" data-open="false">
+          <button aria-expanded="false"><span class="prog-name">Maraudes</span><span class="plus" aria-hidden="true"></span></button>
+          <div class="prog-panel"><div><div class="prog-panel-in">
+            <figure class="photo" data-src="photos/prog-maraudes.jpg"><img src="photos/prog-maraudes.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <div><p>Chaque semaine, des repas chauds faits maison distribués aux personnes à la rue, dans Paris et en Île-de-France.</p><p>Un repas, mais surtout un moment d’échange.</p></div>
+          </div></div></div>
+        </li>
+        <li class="prog-item" data-open="false">
+          <button aria-expanded="false"><span class="prog-name">Café solidaire</span><span class="plus" aria-hidden="true"></span></button>
+          <div class="prog-panel"><div><div class="prog-panel-in">
+            <figure class="photo" data-src="photos/prog-cafe.jpg"><img src="photos/prog-cafe.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <div><p>Un lieu ouvert à tous, à prix solidaires. 100 % des bénéfices reversés à l’association.</p><p>Café, crêpes, granita selon la saison, sodas. Jeux vidéo et télé pour les jeunes du quartier.</p></div>
+          </div></div></div>
+        </li>
+        <li class="prog-item" data-open="false">
+          <button aria-expanded="false"><span class="prog-name">Distributions alimentaires</span><span class="plus" aria-hidden="true"></span></button>
+          <div class="prog-panel"><div><div class="prog-panel-in">
+            <figure class="photo" data-src="photos/prog-etudiants.jpg"><img src="photos/prog-etudiants.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <div><p>Des colis alimentaires pour les familles, les étudiants, pour tous ceux qui en ont besoin, sur inscription. Nos produits, achetés ou issus de collectes, et les invendus des commerces.</p><p>Simple, rapide, sans jugement.</p></div>
+          </div></div></div>
+        </li>
+        <li class="prog-item" data-open="false">
+          <button aria-expanded="false"><span class="prog-name">Bénévolat</span><span class="plus" aria-hidden="true"></span></button>
+          <div class="prog-panel"><div><div class="prog-panel-in">
+            <figure class="photo" data-src="photos/prog-benevolat.jpg"><img src="photos/prog-benevolat.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <div><p>En cuisine, en distribution, au café. Des collectes en magasin, des événements, de la coiffure et de la manucure solidaires.</p><p>Chacun vient avec ce qu’il sait faire.</p></div>
+          </div></div></div>
+        </li>
+        <li class="prog-item" data-open="false">
+          <button aria-expanded="false"><span class="prog-name">Textile solidaire</span><span class="plus" aria-hidden="true"></span></button>
+          <div class="prog-panel"><div><div class="prog-panel-in">
+            <figure class="photo" data-src="photos/prog-textile.jpg"><img src="photos/prog-textile.jpg" alt="" decoding="async" loading="lazy"></figure>
+            <div><p>Des vêtements à l’image de l’association, brodés ou sérigraphiés. Chaque pièce vendue finance nos actions.</p><p>Porter le message, littéralement.</p></div>
+          </div></div></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FILM — la vidéo s’ouvre en plein écran au scroll -->
+  <section class="film" aria-label="Vidéo">
+    <div class="film-sticky">
+      <div class="film-ui">
+        <p class="film-title">2025, en une minute.</p>
+        <p class="film-sub">Le café, la cuisine, les distributions. Une année avec nous.</p>
+        <button class="sound-btn" type="button" aria-pressed="false" hidden>Activer le son</button>
+      </div>
+      <figure class="photo film-frame" data-src="photos/film.jpg" data-video="videos/film.mp4" data-alt="L’année 2025 d’O Cœur de la Rue"><img src="photos/film.jpg" alt="L’année 2025 d’O Cœur de la Rue" decoding="async" loading="lazy"><video src="videos/film.mp4" poster="photos/film.jpg" muted loop playsinline autoplay preload="metadata"></video>
+        <figcaption>videos/film.mp4</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- RECONNAISSANCE -->
+  <section class="laureat" aria-label="Reconnaissance">
+    <blockquote>« Les 40 qui (re)créent du lien. »</blockquote>
+    <cite>Laurent François, président, lauréat 2026 de l’Institut Choiseul et La Poste.</cite>
+    <figure class="laureat-press">
+      <a href="https://www.choiseul-magazine.fr/2026/09/09/laurent-francois-o-coeur-de-la-rue-o-coeur-de-la-rue-est-nee-dune-mobilisation-familiale/" rel="noopener" target="_blank" aria-label="Lire l’article de Choiseul Magazine"><img src="photos/choiseul.jpg" alt="Choiseul Magazine : « O Cœur de la Rue est née d’une mobilisation familiale avant de devenir une aventure collective. »" loading="lazy"></a>
+    </figure>
+    <ul class="proofs">
+      <li><b>Lauréat 2026</b><span>Palmarès « Les 40 qui (re)créent du lien », Institut Choiseul et La Poste.</span><a href="https://www.choiseul-magazine.fr/2026/09/09/laurent-francois-o-coeur-de-la-rue-o-coeur-de-la-rue-est-nee-dune-mobilisation-familiale/" rel="noopener" target="_blank">Lire l’article Choiseul</a></li>
+      <li><b>Mairie du 14e</b><span>O Cœur de la Rue a été distinguée par la Mairie du 14e arrondissement.</span><a href="https://mairie14.paris.fr" rel="noopener" target="_blank">mairie14.paris.fr</a></li>
+      <li><b>2023–2028</b><span>Habilitation régionale pour l’aide alimentaire.</span><a href="https://www.drihl.ile-de-france.developpement-durable.gouv.fr" rel="noopener" target="_blank">Drihl Île-de-France</a></li>
+    </ul>
+  </section>
+
+  <!-- ILS NOUS ONT FILMÉS -->
+  <section class="media" aria-label="Reportages">
+    <div class="media-in">
+      <h2 class="press-title">Ils nous ont filmés.</h2>
+      <div class="media-grid">
+        <article class="media-card">
+          <div class="press-video">
+            <video src="videos/loopsider.mp4" poster="photos/loopsider.jpg" preload="none" playsinline></video>
+            <button class="press-play" type="button" aria-label="Regarder le reportage Loopsider">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              Regarder
+            </button>
+          </div>
+          <h3>Loopsider, novembre 2025</h3>
+          <p>Une soirée avec les bénévoles et les étudiants, de la cuisine à la distribution dans les rues de Paris.</p>
+          <p class="media-credit">Vidéo © Loopsider</p>
+        </article>
+        <article class="media-card">
+          <div class="press-video">
+            <video src="videos/timberland.mp4" poster="photos/timberland.jpg" preload="none" playsinline></video>
+            <button class="press-play" type="button" aria-label="Regarder le film Shinzo Paris pour Timberland">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              Regarder
+            </button>
+          </div>
+          <h3>Shinzo Paris × Timberland, 2022</h3>
+          <p>Une vente solidaire qui a financé l’aménagement de notre local.</p>
+          <p class="media-credit">Vidéo © Shinzo Paris</p>
+        </article>
+        <article class="media-card">
+          <div class="press-video">
+            <video src="videos/dickies.mp4" poster="photos/dickies.jpg" preload="none" playsinline></video>
+            <button class="press-play" type="button" aria-label="Regarder le film Shinzo Paris et Dickies">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              Regarder
+            </button>
+          </div>
+          <h3>Shinzo Paris × Dickies, 2023</h3>
+          <p>Nos vélos cargo, achetés grâce à leur soutien. Pour les collectes et les distributions.</p>
+          <p class="media-credit">Vidéo © Shinzo Paris</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTENAIRES -->
+  <section class="allies" aria-label="Nos partenaires">
+    <div class="allies-in">
+      <h2>Ils avancent avec nous.</h2>
+      <ul class="allies-grid">
+        <li><img src="logos/ville-de-paris.png" alt="Ville de Paris" loading="lazy"></li>
+        <li><img src="logos/mairie-14.png" alt="Mairie du 14e" loading="lazy"></li>
+        <li><img src="logos/seine-saint-denis.png" alt="Seine-Saint-Denis" loading="lazy"></li>
+        <li><img src="logos/drihl.png" alt="Drihl" loading="lazy"></li>
+        <li><img src="logos/fondation-carrefour.png" alt="Fondation Carrefour" loading="lazy"></li>
+        <li><img src="logos/monoprix.png" alt="Monoprix" loading="lazy"></li>
+        <li><img src="logos/timberland.png" alt="Timberland" loading="lazy"></li>
+        <li><img src="logos/psg.png" alt="Paris Saint-Germain" loading="lazy"></li>
+        <li><img src="logos/rungis.png" alt="Rungis Marché international" loading="lazy"></li>
+        <li><img src="logos/dickies.png" alt="Dickies" loading="lazy"></li>
+        <li><img src="logos/shinzo.png" alt="Shinzo Paris" loading="lazy"></li>
+        <li><img src="logos/ligue-enseignement.png" alt="Ligue de l’enseignement" loading="lazy"></li>
+      </ul>
+      <a class="btn btn-line" href="partenaires.html">Tous nos partenaires</a>
+    </div>
+  </section>
+
+  <!-- LA PORTE — le café la nuit -->
+  <section class="door" aria-label="Le café associatif">
+    <figure class="photo door-photo" data-src="photos/porte.jpg" data-alt="La façade du café associatif, le soir"><img src="photos/porte.jpg" alt="La façade du café associatif, le soir" decoding="async" loading="lazy"></figure>
+    <div class="door-txt">
+      <p class="door-title">La porte est ouverte.</p>
+      <p class="door-sub">8 rue du Général Humbert, Paris 14e.</p>
+    </div>
+  </section>
+
+  <!-- REJOINDRE -->
+  <section class="join" id="rejoindre">
+    <div class="join-in">
+      <figure class="photo join-photo" data-src="photos/equipe.jpg" data-alt="L’équipe et les bénévoles d’O Cœur de la Rue"><img src="photos/equipe.jpg" alt="L’équipe et les bénévoles d’O Cœur de la Rue" decoding="async" loading="lazy"></figure>
+      <h2>Rejoins le gang solidaire.</h2>
+      <div class="join-side" id="don">
+        <p>Une heure de ton temps, un don, un partenariat. Tout compte, et tout sert sur le terrain.</p>
+        <div class="join-actions">
+          <a class="btn btn-red" href="dons.html">Faire un don</a>
+          <a class="btn btn-line" href="partenaires.html">Devenir partenaire</a>
+        </div>
+      </div>
+      <ul class="direct-grid join-grid">
+        <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank"><b>Besoin d’aide</b><span>Tu as du mal à te nourrir ? Explique ta situation, on regarde ce qu’on peut faire et on te répond.</span><i>Ouvrir le formulaire</i></a></li>
+        <li><a href="https://tally.so/r/vXGZo4" rel="noopener" target="_blank"><b>Devenir bénévole</b><span>Cuisine, collectes, distributions, accueil. Dis-nous tes envies et tes disponibilités.</span><i>S’inscrire</i></a></li>
+        <li><a href="https://336a3cbf.sibforms.com/serve/MUIFAFg9O30t7Ai0Cu1RleWuU8mhEfsEc1Feg5h86WXoxyOUVPqxuZgJB4Ouy8wW7LwG-ygiEeWT3yXknZLe30Wl47QyjIV6huYPHaKWK8aZIiVfnXhdOXcvhdVTp1SRJkEzeFFn2Qgo1emuzBKKhKY30wDWYYg-MFVbx5a2af07SN0Telo36t8cYjUIrBgpiEuJ8kzrL3SB2ZpG" rel="noopener" target="_blank"><b>Newsletter</b><span>Les actions de terrain, les projets et les besoins du moment.</span><i>S’abonner</i></a></li>
+        <li><a href="https://g.page/r/CVjfJr846ciaEAE/review" rel="noopener" target="_blank"><b>Donner ton avis</b><span>Tu as participé à une action ou été accueilli ? Ton témoignage aide les autres à nous découvrir.</span><i>Avis Google</i></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+      <p>8 rue du Général Humbert<br>75014 Paris</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@ocoeurdelarue.org">contact@ocoeurdelarue.org</a></li>
+        <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Demander une aide</a></li>
+        <li><a href="https://linktr.ee/ocoeurdelarue" rel="noopener">linktr.ee/ocoeurdelarue</a></li>
+        <li><a href="https://336a3cbf.sibforms.com/serve/MUIFAFg9O30t7Ai0Cu1RleWuU8mhEfsEc1Feg5h86WXoxyOUVPqxuZgJB4Ouy8wW7LwG-ygiEeWT3yXknZLe30Wl47QyjIV6huYPHaKWK8aZIiVfnXhdOXcvhdVTp1SRJkEzeFFn2Qgo1emuzBKKhKY30wDWYYg-MFVbx5a2af07SN0Telo36t8cYjUIrBgpiEuJ8kzrL3SB2ZpG" rel="noopener" target="_blank">Newsletter</a></li>
+        <li><a href="https://g.page/r/CVjfJr846ciaEAE/review" rel="noopener" target="_blank">Avis Google</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nous suivre</h4>
+      <ul>
+        <li><a href="https://instagram.com/Ocoeur2larue" rel="noopener" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@ocoeur2larue" rel="noopener" target="_blank">TikTok</a></li>
+        <li><a href="https://www.youtube.com/channel/UC0jvxvRueylT-3jmI7A1AdA" rel="noopener" target="_blank">YouTube</a></li>
+        <li><a href="https://www.facebook.com/Ocoeur2larue" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/oceur2larue" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.snapchat.com/@ocoeur2larue" rel="noopener" target="_blank">Snapchat</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-legal">© 2026 O Cœur de la Rue. Association loi 1901.</p>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const desktop = matchMedia('(min-width: 900px)');
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const progress = el => {
+    const r = el.getBoundingClientRect();
+    const total = r.height - innerHeight;
+    return total > 0 ? clamp(-r.top / total, 0, 1) : 0;
+  };
+
+  /* Menu mobile */
+  const nav = document.querySelector('.nav');
+  const menuBtn = document.querySelector('.menu-btn');
+  const menu = document.querySelector('.mobile-menu');
+  const setMenu = open => {
+    nav.dataset.open = open;
+    menuBtn.setAttribute('aria-expanded', open);
+    menu.setAttribute('aria-hidden', !open);
+  };
+  menuBtn.addEventListener('click', () => setMenu(nav.dataset.open !== 'true'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+  /* Intro : les mots s'allument au fil du scroll */
+  const intro = document.querySelector('[data-words]');
+  intro.innerHTML = intro.textContent.trim().split(/\s+/).map(w => `<span class="dim">${w}</span>`).join(' ');
+  const introWords = [...intro.querySelectorAll('.dim')];
+
+  /* Hero + défilement horizontal */
+  const hero = document.querySelector('.hero');
+  const words = [...document.querySelectorAll('.hero-word')];
+  const samedi = document.querySelector('.samedi');
+  const track = document.querySelector('.samedi-track');
+
+  const sizeSamedi = () => {
+    if (desktop.matches && !reduce) {
+      samedi.style.height = (track.scrollWidth - innerWidth + innerHeight) + 'px';
+    } else {
+      samedi.style.height = '';
+      track.style.transform = '';
+    }
+  };
+
+  let ticking = false;
+  const update = () => {
+    if (!reduce) {
+      const p = progress(hero);
+      hero.style.setProperty('--p', p.toFixed(4));
+      const idx = Math.min(words.length - 1, Math.floor(p * words.length));
+      words.forEach((w, i) => w.classList.toggle('is-active', i === idx));
+
+      const r = intro.getBoundingClientRect();
+      const ip = clamp((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35), 0, 1);
+      const lit = Math.round(ip * introWords.length);
+      introWords.forEach((w, i) => w.classList.toggle('lit', i < lit));
+
+      if (desktop.matches) {
+        const q = progress(samedi);
+        const dist = track.scrollWidth - innerWidth;
+        track.style.transform = `translate3d(${(-q * dist).toFixed(1)}px,0,0)`;
+      }
+    }
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  addEventListener('resize', () => { sizeSamedi(); update(); });
+  desktop.addEventListener('change', () => { sizeSamedi(); update(); });
+  document.fonts && document.fonts.ready.then(() => { sizeSamedi(); update(); });
+  sizeSamedi(); update();
+
+  /* Compteurs, une seule fois */
+  const fmt = (n, d) => n.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, target = parseFloat(el.dataset.count), d = +(el.dataset.dec || 0);
+        const t0 = performance.now(), dur = 1400;
+        const tick = now => {
+          const k = clamp((now - t0) / dur, 0, 1), eased = 1 - Math.pow(1 - k, 3);
+          el.textContent = fmt(target * eased, d);
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(el => { el.textContent = fmt(0, +(el.dataset.dec || 0)); io.observe(el); });
+  }
+
+  /* Médias : photos et vidéos sont directement dans la page (rien à charger en JS).
+     La vidéo n’apparaît que quand elle tourne vraiment ; sinon la photo reste visible. */
+  document.querySelectorAll('.photo video').forEach(v => {
+    const fig = v.closest('.photo');
+    v.muted = true;
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
+    v.addEventListener('playing', () => { fig.dataset.hasVideo = '1'; });
+    v.addEventListener('error', () => v.remove());
+    if (!reduce) v.play().catch(() => {});
+  });
+  if ('IntersectionObserver' in window) {
+    const mio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target.querySelector('video'); if (!v || reduce) return;
+      e.isIntersecting ? v.play().catch(() => {}) : v.pause();
+    }), { rootMargin: '300px 0px' });
+    document.querySelectorAll('.photo').forEach(m => mio.observe(m));
+  }
+  document.querySelector('.sound-btn').hidden = false;
+
+  /* Bouton son du film */
+  const soundBtn = document.querySelector('.sound-btn');
+  soundBtn.addEventListener('click', () => {
+    const v = document.querySelector('.film-frame video'); if (!v) return;
+    v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play(); }
+    soundBtn.setAttribute('aria-pressed', !v.muted);
+    soundBtn.textContent = v.muted ? 'Activer le son' : 'Couper le son';
+  });
+
+  /* Film + galerie liés au scroll */
+  const film = document.querySelector('.film');
+  const door = document.querySelector('.door');
+  const gcols = [...document.querySelectorAll('.gcol')];
+  const gallery = document.querySelector('.gallery');
+  const updateExtra = () => {
+    if (reduce) return;
+    film.style.setProperty('--f', progress(film).toFixed(4));
+    const dr = door.getBoundingClientRect();
+    door.style.setProperty('--d', clamp((innerHeight - dr.top) / (innerHeight + dr.height), 0, 1).toFixed(4));
+    const r = gallery.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight) {
+      const c = (r.top + r.height / 2) - innerHeight / 2;
+      gcols.forEach(col => { col.style.transform = `translate3d(0,${clamp(c * parseFloat(col.dataset.speed), -80, 80).toFixed(1)}px,0)`; });
+    }
+  };
+  addEventListener('scroll', () => requestAnimationFrame(updateExtra), { passive: true });
+  updateExtra();
+
+  /* Reportage Loopsider : lecture au clic, avec le son */
+  document.querySelectorAll('.press-video').forEach(pv => {
+    const pvid = pv.querySelector('video');
+    pv.querySelector('.press-play').addEventListener('click', () => {
+      document.querySelectorAll('.film-frame video, .press-video video').forEach(v => { if (v !== pvid) v.pause(); });
+      pvid.controls = true;
+      pv.classList.add('is-playing');
+      pvid.play().catch(() => {});
+    });
+  });
+
+  /* Programmes : accordéon */
+  document.querySelectorAll('.prog-item').forEach(item => {
+    const btn = item.querySelector('button');
+    btn.addEventListener('click', () => {
+      const open = item.dataset.open !== 'true';
+      document.querySelectorAll('.prog-item').forEach(o => { o.dataset.open = 'false'; o.querySelector('button').setAttribute('aria-expanded', 'false'); });
+      item.dataset.open = open;
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+})();
+</script>
+</body>
+</html>

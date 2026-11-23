@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Devenir bénévole — O Cœur de la Rue</title>
+<meta name="description" content="Cuisine du samedi, maraude, café solidaire, collectes : viens donner une heure avec O Cœur de la Rue à Paris.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+.p-hero{position:relative;min-height:min(88vh,860px);display:flex;align-items:flex-end;overflow:hidden;background:var(--black)}
+.p-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.15) 100%)}
+.p-hero-in{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 22px clamp(50px,9vh,100px)}
+.p-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(2.67rem,8.2vw,6.97rem);line-height:1;max-width:11ch;letter-spacing:-.035em}
+.p-hero p{margin-top:22px;font-size:clamp(1.0625rem,1.6vw,1.3125rem);max-width:38ch;color:#e4e4e4}
+.light{background:var(--paper);color:var(--ink);padding:clamp(90px,12vw,150px) 22px}
+.dark{background:var(--black);color:var(--white);padding:clamp(90px,12vw,150px) 22px}
+.wrap{max-width:1100px;margin:0 auto}
+.h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,5.33vw,4.51rem);line-height:1;max-width:14ch;letter-spacing:-.035em}
+.lead{margin-top:20px;font-size:1.1875rem;max-width:44ch;color:var(--muted)}
+.dark .lead{color:var(--night-muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+.missions{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:clamp(40px,6vw,64px)}
+.mission{position:relative;border-radius:26px;overflow:hidden;min-height:440px;display:flex;align-items:flex-end;background:#1d1d1d}
+.mission img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mission::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 60%)}
+.mission div{position:relative;z-index:1;padding:clamp(24px,3vw,36px);color:#fff}
+.mission h3{font-family:var(--display);font-weight:800;font-size:clamp(1.64rem,2.79vw,2.25rem);line-height:1;letter-spacing:-.035em}
+.mission p{margin-top:10px;max-width:34ch;color:#e4e4e4}
+.extras{margin-top:28px;font-size:1.0625rem;color:var(--muted);max-width:60ch}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid rgba(255,255,255,.16)}
+.steps li{padding:30px 30px 0 0}
+.steps li + li{padding-left:30px;border-left:1px solid rgba(255,255,255,.16)}
+.steps b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.87rem,5.74vw,4.51rem);line-height:.85;color:var(--red);letter-spacing:-.035em}
+.steps h3{margin-top:14px;font-size:1.25rem;font-weight:600}
+.steps p{margin-top:6px;color:var(--night-muted);max-width:28ch}
+@media (max-width:899px){
+  .missions,.steps{grid-template-columns:1fr}
+  .mission{min-height:380px}
+  .steps li + li{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.16);margin-top:30px}
+}
+
+/* thème clair */
+.p-hero{color:#fff}
+.light{background:#fff}
+.dark{background:var(--soft);color:var(--ink)}
+.dark .lead,.other,.steps p,.ways p{color:var(--muted)}
+.other a{color:var(--ink)}
+.give-alt{background:#fff;border:0;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.steps,.steps li + li,.ways,.ways li,.ways li:nth-child(even){border-color:var(--line)!important}
+.mission{box-shadow:0 20px 50px rgba(0,0,0,.12)}
+</style>
+</head>
+<body>
+
+<nav class="nav" data-open="false" aria-label="Navigation principale">
+  <div class="nav-in">
+    <a class="logo" href="index.html"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#terrain">Le terrain</a></li>
+      <li><a href="index.html#programmes">Programmes</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="benevole.html" aria-current="page">Bénévolat</a></li>
+      <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+    </ul>
+    <a class="btn btn-red btn-small" href="dons.html">Faire un don</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="partenaires.html">Partenaires</a></li>
+    <li><a href="benevole.html">Bénévolat</a></li>
+    <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+  </ul>
+  <a class="btn btn-red" href="dons.html">Faire un don</a>
+</div>
+
+<main>
+  <section class="p-hero">
+    <img src="photos/equipe.jpg" alt="L’équipe et les bénévoles d’O Cœur de la Rue">
+    <div class="p-hero-in">
+      <h1>Une heure, ça compte.</h1>
+      <p>Le samedi aujourd’hui, en semaine demain. Pas besoin d’expérience : tu viens avec ce que tu sais faire, on t’apprend le reste.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <h2 class="h2">Où tu peux aider.</h2>
+      <ul class="missions">
+        <li class="mission"><img src="photos/cuisine-2.jpg" alt="" loading="lazy"><div><h3>La cuisine</h3><p>On cuisine les invendus récupérés. Épluchage, cuisson, barquettes.</p></div></li>
+        <li class="mission"><img src="photos/prog-maraudes.jpg" alt="" loading="lazy"><div><h3>La maraude</h3><p>Le soir, dans Paris et en Île-de-France. On distribue les repas et on prend le temps de parler.</p></div></li>
+        <li class="mission"><img src="photos/prog-cafe.jpg" alt="" loading="lazy"><div><h3>Le café</h3><p>Accueil, café, crêpes, granita selon la saison. Jeux vidéo et télé avec les jeunes du quartier.</p></div></li>
+        <li class="mission"><img src="photos/prog-etudiants.jpg" alt="" loading="lazy"><div><h3>Les distributions</h3><p>Des colis alimentaires pour les familles et les étudiants. Préparer, accueillir, distribuer.</p></div></li>
+      </ul>
+      <p class="extras">Et aussi : collectes en magasin, événements, coiffure et manucure solidaires, et d’autres actions ponctuelles.</p>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <h2 class="h2">Comment on commence.</h2>
+      <ol class="steps">
+        <li><b>1</b><h3>Tu t’inscris</h3><p>Un formulaire court : tes disponibilités et ce qui te tente.</p></li>
+        <li><b>2</b><h3>On te répond</h3><p>On t’explique comment ça se passe et on cale une date.</p></li>
+        <li><b>3</b><h3>Tu viens</h3><p>Ta première action avec l’équipe, au 8 rue du Général Humbert.</p></li>
+      </ol>
+      <div class="actions">
+        <a class="btn btn-red" href="https://tally.so/r/vXGZo4" rel="noopener" target="_blank">Je m’inscris</a>
+        <a class="btn btn-line" href="mailto:contact@ocoeurdelarue.org?subject=Devenir%20b%C3%A9n%C3%A9vole">Écrire un mail</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <a class="logo" href="index.html"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+      <p>8 rue du Général Humbert<br>75014 Paris</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@ocoeurdelarue.org">contact@ocoeurdelarue.org</a></li>
+        <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Demander une aide</a></li>
+        <li><a href="https://linktr.ee/ocoeurdelarue" rel="noopener">linktr.ee/ocoeurdelarue</a></li>
+        <li><a href="https://336a3cbf.sibforms.com/serve/MUIFAFg9O30t7Ai0Cu1RleWuU8mhEfsEc1Feg5h86WXoxyOUVPqxuZgJB4Ouy8wW7LwG-ygiEeWT3yXknZLe30Wl47QyjIV6huYPHaKWK8aZIiVfnXhdOXcvhdVTp1SRJkEzeFFn2Qgo1emuzBKKhKY30wDWYYg-MFVbx5a2af07SN0Telo36t8cYjUIrBgpiEuJ8kzrL3SB2ZpG" rel="noopener" target="_blank">Newsletter</a></li>
+        <li><a href="https://g.page/r/CVjfJr846ciaEAE/review" rel="noopener" target="_blank">Avis Google</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nous suivre</h4>
+      <ul>
+        <li><a href="https://instagram.com/Ocoeur2larue" rel="noopener" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@ocoeur2larue" rel="noopener" target="_blank">TikTok</a></li>
+        <li><a href="https://www.youtube.com/channel/UC0jvxvRueylT-3jmI7A1AdA" rel="noopener" target="_blank">YouTube</a></li>
+        <li><a href="https://www.facebook.com/Ocoeur2larue" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/oceur2larue" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.snapchat.com/@ocoeur2larue" rel="noopener" target="_blank">Snapchat</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-legal">© 2026 O Cœur de la Rue. Association loi 1901.</p>
+</footer>
+
+<script>
+(() => {
+  const nav = document.querySelector('.nav'), btn = document.querySelector('.menu-btn'), menu = document.querySelector('.mobile-menu');
+  const set = o => { nav.dataset.open = o; btn.setAttribute('aria-expanded', o); menu.setAttribute('aria-hidden', !o); };
+  btn.addEventListener('click', () => set(nav.dataset.open !== 'true'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Faire un don — O Cœur de la Rue</title>
+<meta name="description" content="Ton don finance les repas chauds, les maraudes et le café solidaire d’O Cœur de la Rue. Reçu fiscal automatique.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+.p-hero{position:relative;min-height:min(88vh,860px);display:flex;align-items:flex-end;overflow:hidden;background:var(--black)}
+.p-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.15) 100%)}
+.p-hero-in{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 22px clamp(50px,9vh,100px)}
+.p-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(2.67rem,8.2vw,6.97rem);line-height:1;max-width:11ch;letter-spacing:-.035em}
+.p-hero p{margin-top:22px;font-size:clamp(1.0625rem,1.6vw,1.3125rem);max-width:38ch;color:#e4e4e4}
+.light{background:var(--paper);color:var(--ink);padding:clamp(90px,12vw,150px) 22px}
+.dark{background:var(--black);color:var(--white);padding:clamp(90px,12vw,150px) 22px}
+.wrap{max-width:1100px;margin:0 auto}
+.h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,5.33vw,4.51rem);line-height:1;max-width:14ch;letter-spacing:-.035em}
+.lead{margin-top:20px;font-size:1.1875rem;max-width:44ch;color:var(--muted)}
+.dark .lead{color:var(--night-muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+.proof{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,90px);align-items:end}
+.proof-num{font-family:var(--display);font-weight:900;font-size:clamp(4.1rem,13.1vw,10.7rem);line-height:.8;color:var(--red);letter-spacing:-.035em}
+.proof-num small{display:block;font-size:.22em;line-height:1;color:var(--ink);margin-top:14px;font-weight:700;letter-spacing:-.015em}
+.proof-txt{font-size:1.1875rem;max-width:34ch}
+.give{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(40px,6vw,64px)}
+.give-card{border-radius:26px;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:300px}
+.give-card h3{font-family:var(--display);font-weight:800;font-size:clamp(1.64rem,2.79vw,2.25rem);line-height:1;letter-spacing:-.035em}
+.give-card p{flex:1;max-width:34ch}
+.give-main{background:var(--red);color:#fff}
+.give-main .btn{background:#fff;color:#000;align-self:flex-start}
+.give-alt{border:1.5px solid rgba(255,255,255,.25)}
+.give-alt .btn{align-self:flex-start}
+.tax{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.tax div{padding:30px 30px 0 0}
+.tax div + div{padding-left:30px;border-left:1px solid var(--line)}
+.tax b{display:block;white-space:nowrap;font-family:var(--display);font-weight:900;font-size:clamp(2.87rem,6.56vw,4.92rem);line-height:.9;color:var(--red);letter-spacing:-.035em}
+.tax span{display:block;margin-top:10px;max-width:34ch}
+.tax em{display:block;margin-top:10px;font-style:normal;color:var(--muted);font-size:.9375rem}
+.other{margin-top:22px;font-size:1.0625rem;color:var(--night-muted)}
+.other a{color:#fff}
+@media (max-width:899px){
+  .proof,.give,.tax{grid-template-columns:1fr}
+  .tax div + div{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:30px}
+}
+
+/* thème clair */
+.p-hero{color:#fff}
+.light{background:#fff}
+.dark{background:var(--soft);color:var(--ink)}
+.dark .lead,.other,.steps p,.ways p{color:var(--muted)}
+.other a{color:var(--ink)}
+.give-alt{background:#fff;border:0;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.steps,.steps li + li,.ways,.ways li,.ways li:nth-child(even){border-color:var(--line)!important}
+.mission{box-shadow:0 20px 50px rgba(0,0,0,.12)}
+</style>
+</head>
+<body>
+
+<nav class="nav" data-open="false" aria-label="Navigation principale">
+  <div class="nav-in">
+    <a class="logo" href="index.html"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#terrain">Le terrain</a></li>
+      <li><a href="index.html#programmes">Programmes</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="benevole.html">Bénévolat</a></li>
+      <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+    </ul>
+    <a class="btn btn-red btn-small" href="dons.html">Faire un don</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="partenaires.html">Partenaires</a></li>
+    <li><a href="benevole.html">Bénévolat</a></li>
+    <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+  </ul>
+  <a class="btn btn-red" href="dons.html">Faire un don</a>
+</div>
+
+<main>
+  <section class="p-hero">
+    <img src="photos/cuisine.jpg" alt="Un bénévole coupe des poivrons en cuisine">
+    <div class="p-hero-in">
+      <h1>Ton don part sur le terrain.</h1>
+      <p>Il paie les courses de la cuisine, les barquettes de la maraude et fait tourner le café solidaire.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap proof">
+      <p class="proof-num">407<small>plats chauds</small></p>
+      <p class="proof-txt">Le samedi 13 septembre, 165,38 € de courses ont suffi pour cuisiner 407 plats chauds avec les invendus récupérés. Sur toute l’année 2025, 6 738 € d’achats ont complété les dons pour 14 859 repas. Chaque euro compte, et se voit.</p>
+    </div>
+  </section>
+
+  <section class="dark" id="donner">
+    <div class="wrap">
+      <h2 class="h2">Donner.</h2>
+      <p class="lead">Par HelloAsso ou par PayPal, comme tu préfères.</p>
+      <div class="give">
+        <div class="give-card give-main">
+          <h3>Avec HelloAsso</h3>
+          <p>Ton soutien passe par l’adhésion 2026. Paiement sécurisé, et ton reçu fiscal arrive automatiquement par mail.</p>
+          <a class="btn" href="https://www.helloasso.com/associations/o-coeur-de-la-rue/adhesions/adhesion-o-coeur-de-la-rue-2026" rel="noopener" target="_blank">Soutenir sur HelloAsso</a>
+        </div>
+        <div class="give-card give-alt">
+          <h3>Avec PayPal</h3>
+          <p>Si tu as déjà un compte PayPal. Pour recevoir ton reçu fiscal, écris-nous après ton don.</p>
+          <a class="btn btn-line" href="https://www.paypal.com/donate?hosted_button_id=HNABWMJ9SV59Q" rel="noopener" target="_blank">Donner sur PayPal</a>
+        </div>
+      </div>
+      <p class="other">Des invendus, du matériel, des vêtements ? <a href="mailto:contact@ocoeurdelarue.org?subject=Don%20en%20nature">Écris-nous</a>, on vient les chercher quand on peut.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <h2 class="h2">Ce que ça te coûte vraiment.</h2>
+      <p class="lead">O Cœur de la Rue est une association d’intérêt général. Tes dons ouvrent droit à une réduction d’impôt.</p>
+      <div class="tax">
+        <div><b>66&nbsp;%</b><span>de réduction d’impôt pour les particuliers. Un don de 50 € te revient à 17 €.</span><em>Dans la limite de 20 % du revenu imposable.</em></div>
+        <div><b>60&nbsp;%</b><span>de réduction d’impôt sur les sociétés pour les entreprises mécènes.</span><em>Dans la limite de 20 000 € ou 0,5 % du chiffre d’affaires.</em></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <a class="logo" href="index.html"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+      <p>8 rue du Général Humbert<br>75014 Paris</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@ocoeurdelarue.org">contact@ocoeurdelarue.org</a></li>
+        <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Demander une aide</a></li>
+        <li><a href="https://linktr.ee/ocoeurdelarue" rel="noopener">linktr.ee/ocoeurdelarue</a></li>
+        <li><a href="https://336a3cbf.sibforms.com/serve/MUIFAFg9O30t7Ai0Cu1RleWuU8mhEfsEc1Feg5h86WXoxyOUVPqxuZgJB4Ouy8wW7LwG-ygiEeWT3yXknZLe30Wl47QyjIV6huYPHaKWK8aZIiVfnXhdOXcvhdVTp1SRJkEzeFFn2Qgo1emuzBKKhKY30wDWYYg-MFVbx5a2af07SN0Telo36t8cYjUIrBgpiEuJ8kzrL3SB2ZpG" rel="noopener" target="_blank">Newsletter</a></li>
+        <li><a href="https://g.page/r/CVjfJr846ciaEAE/review" rel="noopener" target="_blank">Avis Google</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nous suivre</h4>
+      <ul>
+        <li><a href="https://instagram.com/Ocoeur2larue" rel="noopener" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@ocoeur2larue" rel="noopener" target="_blank">TikTok</a></li>
+        <li><a href="https://www.youtube.com/channel/UC0jvxvRueylT-3jmI7A1AdA" rel="noopener" target="_blank">YouTube</a></li>
+        <li><a href="https://www.facebook.com/Ocoeur2larue" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/oceur2larue" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.snapchat.com/@ocoeur2larue" rel="noopener" target="_blank">Snapchat</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-legal">© 2026 O Cœur de la Rue. Association loi 1901.</p>
+</footer>
+
+<script>
+(() => {
+  const nav = document.querySelector('.nav'), btn = document.querySelector('.menu-btn'), menu = document.querySelector('.mobile-menu');
+  const set = o => { nav.dataset.open = o; btn.setAttribute('aria-expanded', o); menu.setAttribute('aria-hidden', !o); };
+  btn.addEventListener('click', () => set(nav.dataset.open !== 'true'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+})();
+</script>
+</body>
+</html>

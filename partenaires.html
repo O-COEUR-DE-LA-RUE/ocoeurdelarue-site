@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partenaires — O Cœur de la Rue</title>
+<meta name="description" content="Collectivités, entreprises, fondations et commerçants : ceux qui avancent avec O Cœur de la Rue, et comment nous rejoindre.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+.p-hero{position:relative;min-height:min(88vh,860px);display:flex;align-items:flex-end;overflow:hidden;background:var(--black)}
+.p-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.15) 100%)}
+.p-hero-in{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 22px clamp(50px,9vh,100px)}
+.p-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(2.67rem,8.2vw,6.97rem);line-height:1;max-width:11ch;letter-spacing:-.035em}
+.p-hero p{margin-top:22px;font-size:clamp(1.0625rem,1.6vw,1.3125rem);max-width:38ch;color:#e4e4e4}
+.light{background:var(--paper);color:var(--ink);padding:clamp(90px,12vw,150px) 22px}
+.dark{background:var(--black);color:var(--white);padding:clamp(90px,12vw,150px) 22px}
+.wrap{max-width:1100px;margin:0 auto}
+.h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,5.33vw,4.51rem);line-height:1;max-width:14ch;letter-spacing:-.035em}
+.lead{margin-top:20px;font-size:1.1875rem;max-width:44ch;color:var(--muted)}
+.dark .lead{color:var(--night-muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+.wall-group{margin-top:clamp(40px,6vw,64px)}
+.wall-group h3{font-size:1rem;font-weight:600;color:var(--muted);padding-bottom:14px;border-bottom:1px solid var(--line)}
+.wall{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.wall li{position:relative;background:#fff;border-radius:16px;aspect-ratio:3/2;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.wall img{position:absolute;inset:18%;width:64%;height:64%;max-width:none;object-fit:contain}
+.ways{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid rgba(255,255,255,.16)}
+.ways li{padding:30px 30px 30px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.ways li:nth-child(even){padding-left:30px;border-left:1px solid rgba(255,255,255,.16)}
+.ways h3{font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,2.46vw,2.05rem);line-height:1;letter-spacing:-.035em}
+.ways p{margin-top:10px;color:var(--night-muted);max-width:36ch}
+.figures{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.figures div{padding:30px 30px 0 0}
+.figures div{padding-bottom:30px;border-bottom:1px solid var(--line)}
+.figures div:not(:nth-child(3n+1)){padding-left:30px;border-left:1px solid var(--line)}
+.figures b{display:block;white-space:nowrap;font-family:var(--display);font-weight:900;font-size:clamp(2.25rem,4.1vw,3.69rem);line-height:.9;letter-spacing:-.035em}
+.figures span{display:block;margin-top:10px;max-width:28ch;color:var(--muted)}
+.award{text-wrap:balance;margin-top:clamp(50px,7vw,80px);font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,2.95vw,2.46rem);line-height:1.02;max-width:26ch;letter-spacing:-.035em}
+.award small{display:block;margin-top:14px;font-family:var(--text);font-weight:400;font-size:1rem;color:var(--muted);letter-spacing:normal;line-height:1.5}
+.spo-block{margin-top:clamp(60px,8vw,100px)}
+.spo-block h3{margin-top:22px;font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em}
+.spo-block p{margin-top:8px;color:var(--muted);max-width:52ch}
+.spo-block .media-credit{font-size:.8125rem}
+@media (max-width:899px){
+  .wall{grid-template-columns:repeat(3,1fr);gap:8px}
+  .wall li{border-radius:12px}
+  .wall img{inset:14%;width:72%;height:72%}
+  .ways,.figures{grid-template-columns:1fr}
+  .ways li:nth-child(even){padding-left:0;border-left:0}
+  .figures div:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+}
+
+/* thème clair */
+.p-hero{color:#fff}
+.light{background:#fff}
+.dark{background:var(--soft);color:var(--ink)}
+.dark .lead,.other,.steps p,.ways p{color:var(--muted)}
+.other a{color:var(--ink)}
+.give-alt{background:#fff;border:0;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.steps,.steps li + li,.ways,.ways li,.ways li:nth-child(even){border-color:var(--line)!important}
+.mission{box-shadow:0 20px 50px rgba(0,0,0,.12)}
+</style>
+</head>
+<body>
+
+<nav class="nav" data-open="false" aria-label="Navigation principale">
+  <div class="nav-in">
+    <a class="logo" href="index.html"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#terrain">Le terrain</a></li>
+      <li><a href="index.html#programmes">Programmes</a></li>
+      <li><a href="partenaires.html" aria-current="page">Partenaires</a></li>
+      <li><a href="benevole.html">Bénévolat</a></li>
+      <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+    </ul>
+    <a class="btn btn-red btn-small" href="dons.html">Faire un don</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="partenaires.html">Partenaires</a></li>
+    <li><a href="benevole.html">Bénévolat</a></li>
+    <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Besoin d’aide</a></li>
+  </ul>
+  <a class="btn btn-red" href="dons.html">Faire un don</a>
+</div>
+
+<main>
+  <section class="p-hero">
+    <img src="photos/prog-benevolat.jpg" alt="Bénévoles en cuisine, le samedi">
+    <div class="p-hero-in">
+      <h1>On ne fait rien seuls.</h1>
+      <p>Collectivités, entreprises, fondations, commerçants du quartier. Chacun apporte ce qu’il peut, et tout finit sur le terrain.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <h2 class="h2">Ils avancent avec nous.</h2>
+      <div class="wall-group">
+        <h3>Institutions</h3>
+        <ul class="wall">
+          <li><img src="logos/ville-de-paris.png" alt="Ville de Paris" loading="lazy"></li>
+          <li><img src="logos/mairie-14.png" alt="Mairie du 14e" loading="lazy"></li>
+          <li><img src="logos/seine-saint-denis.png" alt="Seine-Saint-Denis, le Département" loading="lazy"></li>
+          <li><img src="logos/gagny.png" alt="Ville de Gagny" loading="lazy"></li>
+          <li><img src="logos/drihl.png" alt="Drihl" loading="lazy"></li>
+        </ul>
+      </div>
+      <div class="wall-group">
+        <h3>Entreprises et fondations</h3>
+        <ul class="wall">
+          <li><img src="logos/fondation-carrefour.png" alt="Fondation Carrefour" loading="lazy"></li>
+          <li><img src="logos/monoprix.png" alt="Monoprix" loading="lazy"></li>
+          <li><img src="logos/rungis.png" alt="Rungis Marché international" loading="lazy"></li>
+          <li><img src="logos/hmarket.png" alt="Hmarket" loading="lazy"></li>
+          <li><img src="logos/timberland.png" alt="Timberland" loading="lazy"></li>
+          <li><img src="logos/dickies.png" alt="Dickies" loading="lazy"></li>
+          <li><img src="logos/shinzo.png" alt="Shinzo Paris" loading="lazy"></li>
+          <li><img src="logos/botch.png" alt="Botch CargoBikes" loading="lazy"></li>
+          <li><img src="logos/psg.png" alt="Paris Saint-Germain" loading="lazy"></li>
+        </ul>
+      </div>
+      <div class="wall-group">
+        <h3>Associations et quartier</h3>
+        <ul class="wall">
+          <li><img src="logos/ligue-enseignement.png" alt="Ligue de l’enseignement, Fédération de Paris" loading="lazy"></li>
+          <li><img src="logos/maison-etudiante.png" alt="La Maison étudiante" loading="lazy"></li>
+          <li><img src="logos/quincys.png" alt="Quincy’s Barbershop" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <h2 class="h2">Ce qu’on peut faire ensemble.</h2>
+      <ul class="ways">
+        <li><h3>Les invendus</h3><p>Vos produits invendus deviennent des repas chauds le samedi, et des colis pour les familles et les étudiants.</p></li>
+        <li><h3>Le mécénat</h3><p>Un soutien financier ou en nature. 60 % de réduction d’impôt pour l’entreprise.</p></li>
+        <li><h3>Les équipes</h3><p>Vos salariés en cuisine ou en maraude, le temps d’une journée solidaire.</p></li>
+        <li><h3>Les projets</h3><p>Une collection, un événement, une collecte. Comme avec Shinzo Paris et Timberland.</p></li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-red" href="mailto:laurent@ocoeurdelarue.org?subject=Partenariat%20O%20C%C5%93ur%20de%20la%20Rue">Proposer un partenariat</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <h2 class="h2">En chiffres.</h2>
+      <div class="figures">
+        <div><b>14&#8239;859</b><span>repas chauds préparés et distribués en 2025.</span></div>
+        <div><b>9&#8239;000&nbsp;h</b><span>de bénévolat en 2025.</span></div>
+        <div><b>22&#8239;000&nbsp;€</b><span>d’invendus alimentaires reçus en 2025.</span></div>
+        <div><b>400</b><span>étudiants accompagnés.</span></div>
+        <div><b>250</b><span>foyers soutenus.</span></div>
+        <div><b>2023–2028</b><span>Habilitation régionale pour l’aide alimentaire.</span></div>
+      </div>
+      <article class="spo-block">
+        <div class="press-video spo-video">
+          <video src="videos/sciences-po.mp4" poster="photos/sciences-po.jpg" preload="none" playsinline></video>
+          <button class="press-play" type="button" aria-label="Regarder le reportage des étudiants de Sciences Po">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+            Regarder
+          </button>
+        </div>
+        <h3>Sciences Po, avril 2025</h3>
+        <p>Maya et Stanislaw ont suivi une journée complète au Village Reille, notre base pendant quatre ans, avec Pattie Boyz en cuisine.</p>
+        <p class="media-credit">Réalisation : Maya et Stanislaw</p>
+      </article>
+      <p class="award">« Les 40 qui (re)créent du lien. »<small>Laurent François, président, lauréat 2026 de l’Institut Choiseul et La Poste. Association distinguée par la Mairie du 14e. <a href="https://www.choiseul-magazine.fr/2026/09/09/laurent-francois-o-coeur-de-la-rue-o-coeur-de-la-rue-est-nee-dune-mobilisation-familiale/" rel="noopener" target="_blank">Lire l’article Choiseul</a></small></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <a class="logo" href="index.html"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="562" height="160"></a>
+      <p>8 rue du Général Humbert<br>75014 Paris</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@ocoeurdelarue.org">contact@ocoeurdelarue.org</a></li>
+        <li><a href="https://tally.so/r/6D8g2P" rel="noopener" target="_blank">Demander une aide</a></li>
+        <li><a href="https://linktr.ee/ocoeurdelarue" rel="noopener">linktr.ee/ocoeurdelarue</a></li>
+        <li><a href="https://336a3cbf.sibforms.com/serve/MUIFAFg9O30t7Ai0Cu1RleWuU8mhEfsEc1Feg5h86WXoxyOUVPqxuZgJB4Ouy8wW7LwG-ygiEeWT3yXknZLe30Wl47QyjIV6huYPHaKWK8aZIiVfnXhdOXcvhdVTp1SRJkEzeFFn2Qgo1emuzBKKhKY30wDWYYg-MFVbx5a2af07SN0Telo36t8cYjUIrBgpiEuJ8kzrL3SB2ZpG" rel="noopener" target="_blank">Newsletter</a></li>
+        <li><a href="https://g.page/r/CVjfJr846ciaEAE/review" rel="noopener" target="_blank">Avis Google</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nous suivre</h4>
+      <ul>
+        <li><a href="https://instagram.com/Ocoeur2larue" rel="noopener" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@ocoeur2larue" rel="noopener" target="_blank">TikTok</a></li>
+        <li><a href="https://www.youtube.com/channel/UC0jvxvRueylT-3jmI7A1AdA" rel="noopener" target="_blank">YouTube</a></li>
+        <li><a href="https://www.facebook.com/Ocoeur2larue" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/company/oceur2larue" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.snapchat.com/@ocoeur2larue" rel="noopener" target="_blank">Snapchat</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-legal">© 2026 O Cœur de la Rue. Association loi 1901.</p>
+</footer>
+
+<script>
+(() => {
+  const nav = document.querySelector('.nav'), btn = document.querySelector('.menu-btn'), menu = document.querySelector('.mobile-menu');
+  const set = o => { nav.dataset.open = o; btn.setAttribute('aria-expanded', o); menu.setAttribute('aria-hidden', !o); };
+  btn.addEventListener('click', () => set(nav.dataset.open !== 'true'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+  /* Vidéos : lecture au clic, avec le son, une seule à la fois */
+  document.querySelectorAll('.press-video').forEach(pv => {
+    const pvid = pv.querySelector('video');
+    pv.querySelector('.press-play').addEventListener('click', () => {
+      document.querySelectorAll('.press-video video').forEach(v => { if (v !== pvid) v.pause(); });
+      pvid.controls = true;
+      pv.classList.add('is-playing');
+      pvid.play().catch(() => {});
+    });
+  });
+})();
+</script>
+</body>
+</html>
