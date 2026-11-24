@@ -50,6 +50,13 @@
 .ways li:nth-child(even){padding-left:30px;border-left:1px solid rgba(255,255,255,.16)}
 .ways h3{font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,2.46vw,2.05rem);line-height:1;letter-spacing:-.035em}
 .ways p{margin-top:10px;color:var(--night-muted);max-width:36ch}
+.trust{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.trust li{padding:30px 30px 30px 0;border-bottom:1px solid var(--line)}
+.trust li:not(:nth-child(3n+1)){padding-left:30px;border-left:1px solid var(--line)}
+.trust b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(1.64rem,2.79vw,2.25rem);line-height:1;letter-spacing:-.035em;color:var(--red)}
+.trust span{display:block;margin-top:12px;max-width:34ch}
+.trust a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:899px){.trust{grid-template-columns:1fr}.trust li:not(:nth-child(3n+1)){padding-left:0;border-left:0}}
 .figures{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
 .figures div{padding:30px 30px 0 0}
 .figures div{padding-bottom:30px;border-bottom:1px solid var(--line)}
@@ -158,6 +165,21 @@
     </div>
   </section>
 
+  <section class="light" id="confiance">
+    <div class="wrap">
+      <h2 class="h2">Pourquoi nous faire confiance.</h2>
+      <p class="lead">Ce qu’un financeur vérifie avant de s’engager, en un coup d’œil.</p>
+      <ul class="trust">
+        <li><b>Depuis 2019</b><span>Association loi 1901, Paris 14e. SIREN 880&nbsp;392&nbsp;592, RNA W932011061.</span></li>
+        <li><b>Habilitée</b><span>Habilitation régionale pour l’aide alimentaire 2023–2028, délivrée par la Drihl Île-de-France.</span></li>
+        <li><b>Chiffres publics</b><span>Ressources et charges de janvier à octobre 2026, poste par poste. <a href="/impact">Voir la page Impact</a>.</span></li>
+        <li><b>0&nbsp;€ de dette</b><span>Aucun emprunt, aucun découvert. Plusieurs sources de financement, aucune dépendance à un seul acteur.</span></li>
+        <li><b>Reconnue</b><span>Son président, lauréat 2026 de l’Institut Choiseul et La Poste. Association distinguée par la Mairie du&nbsp;14e.</span></li>
+        <li><b>Une réponse rapide</b><span>Une seule adresse pour toutes les demandes de partenariat&nbsp;: <a href="mailto:contact@ocoeurdelarue.org?subject=Partenariat%20O%20C%C5%93ur%20de%20la%20Rue">contact@ocoeurdelarue.org</a>.</span></li>
+      </ul>
+    </div>
+  </section>
+
   <section class="dark">
     <div class="wrap">
       <h2 class="h2">Ce qu’on peut faire ensemble.</h2>
@@ -168,7 +190,7 @@
         <li><h3>Les projets</h3><p>Une collection, un événement, une collecte. Comme avec Shinzo Paris et Timberland.</p></li>
       </ul>
       <div class="actions">
-        <a class="btn btn-red" href="mailto:laurent@ocoeurdelarue.org?subject=Partenariat%20O%20C%C5%93ur%20de%20la%20Rue">Proposer un partenariat</a>
+        <a class="btn btn-red" href="mailto:contact@ocoeurdelarue.org?subject=Partenariat%20O%20C%C5%93ur%20de%20la%20Rue">Proposer un partenariat</a>
         <a class="btn btn-line" href="/presentation-o-coeur-de-la-rue-2026.pdf" download>Télécharger notre présentation (PDF)</a>
       </div>
     </div>
