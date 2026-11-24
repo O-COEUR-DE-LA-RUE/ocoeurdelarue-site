@@ -149,6 +149,22 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* ============ PROGRAMMES ============ */
 .prog{background:var(--paper);color:var(--ink);padding:0 22px clamp(100px,14vw,180px)}
 .prog-in{max-width:1200px;margin:0 auto}
+.pgrid{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.pcard{grid-column:span 2;background:#fff;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.pcard:nth-child(-n+2){grid-column:span 3}
+.pcard .photo{aspect-ratio:16/10;border-radius:0}
+.pcard:nth-child(-n+2) .photo{aspect-ratio:16/9}
+.pcard-body{padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:12px;flex:1}
+.pcard h3{font-family:var(--display);font-weight:800;font-size:clamp(1.43rem,2.3vw,1.9rem);line-height:1;letter-spacing:-.035em}
+.pcard-num b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,4vw,3.3rem);line-height:.9;color:var(--red);letter-spacing:-.035em}
+.pcard-num span{display:block;margin-top:6px;font-size:.9375rem;color:var(--muted)}
+.pcard p{max-width:40ch}
+.pcard-body > p:not(.pcard-num){color:var(--muted);flex:1}
+.pcard-cta{align-self:flex-start;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
+.pcard-cta:hover{color:var(--red)}
+.samedi-bar{max-width:1156px;width:calc(100% - 44px);margin:0 auto 24px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.samedi-bar span{display:block;height:100%;width:100%;background:var(--red);transform-origin:left;transform:scaleX(var(--q,0))}
+.step-fact{display:inline-block;margin-top:14px;padding:6px 12px;border-radius:999px;background:var(--red);color:#fff !important;font-weight:700;font-size:.875rem !important}
 .prog h2{font-family:var(--display);font-weight:800;font-size:clamp(2.05rem,4.92vw,4.1rem);line-height:.95;margin-bottom:clamp(36px,5vw,60px);letter-spacing:-.035em}
 .prog-list{list-style:none;border-top:1px solid var(--line)}
 .prog-item{border-bottom:1px solid var(--line)}
@@ -307,6 +323,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .impact-grid{grid-template-columns:1fr}
   .impact-grid div,.impact-grid div:not(:nth-child(3n+1)){padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
   .prog-panel-in{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr}
+  .pcard,.pcard:nth-child(-n+2){grid-column:auto}
+  .samedi-bar{display:none}
   .prog-tag{display:block;margin:8px 0 0}
   .join-in{grid-template-columns:1fr}
   .foot-in{grid-template-columns:1fr}
@@ -477,25 +496,26 @@ body::before,.nav{background:rgba(255,255,255,.8)}
         <h2>Un samedi avec nous.</h2>
         <p>Chaque semaine, la même boucle. Du café du matin à la maraude du soir.</p>
       </div>
+      <div class="samedi-bar" aria-hidden="true"><span></span></div>
       <div class="samedi-track">
         <article class="step">
           <figure class="photo" data-src="photos/cafe.jpg" data-alt="La façade du café associatif"><img src="photos/cafe.jpg" alt="La façade du café associatif" decoding="async" loading="lazy" width="1440" height="1800"></figure>
           <div class="step-body">
-            <div class="step-txt"><h3>Le café</h3><p>Café, crêpes, sodas à prix solidaires. Tout ce qui est gagné repart dans les actions.</p></div>
+            <div class="step-txt"><h3>Le café</h3><p>Café, crêpes, sodas à prix solidaires. Tout ce qui est gagné repart dans les actions.</p><p class="step-fact">≈&nbsp;7&nbsp;800 passages en caisse en 2026</p></div>
             <span class="step-num">01</span>
           </div>
         </article>
         <article class="step">
           <figure class="photo" data-src="photos/cuisine.jpg" data-alt="Un bénévole coupe des poivrons en cuisine"><img src="photos/cuisine.jpg" alt="Un bénévole coupe des poivrons en cuisine" decoding="async" loading="lazy" width="1800" height="1200"></figure>
           <div class="step-body">
-            <div class="step-txt"><h3>La cuisine</h3><p>On cuisine les invendus récupérés. Des fruits et légumes bio quand on peut.</p></div>
+            <div class="step-txt"><h3>La cuisine</h3><p>On cuisine les invendus récupérés. Des fruits et légumes bio quand on peut.</p><p class="step-fact">11,1&nbsp;T d’invendus sauvés en 2026</p></div>
             <span class="step-num">02</span>
           </div>
         </article>
         <article class="step">
           <figure class="photo" data-src="photos/maraude.jpg" data-alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue"><img src="photos/maraude.jpg" alt="Un bénévole garde la main sur la marmite pendant la maraude, dans la rue" decoding="async" loading="lazy" width="1600" height="1066"></figure>
           <div class="step-body">
-            <div class="step-txt"><h3>La maraude</h3><p>Le soir, on part dans Paris et en Île-de-France. On distribue, on prend le temps de parler.</p></div>
+            <div class="step-txt"><h3>La maraude</h3><p>Le soir, on part dans Paris et en Île-de-France. On distribue, on prend le temps de parler.</p><p class="step-fact">≈&nbsp;285 repas par maraude en 2026</p></div>
             <span class="step-num">03</span>
           </div>
         </article>
@@ -556,41 +576,51 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   <section class="prog" id="programmes">
     <div class="prog-in">
       <h2>Ce qu’on fait.</h2>
-      <ul class="prog-list">
-        <li class="prog-item" data-open="false">
-          <button aria-expanded="false"><span class="prog-name">Maraudes</span><span class="plus" aria-hidden="true"></span></button>
-          <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-maraudes.jpg"><img src="photos/prog-maraudes.jpg" alt="Maraude du soir dans Paris" decoding="async" loading="lazy" width="933" height="1400"></figure>
-            <div><p>Chaque semaine, des repas chauds faits maison distribués aux personnes à la rue, dans Paris et en Île-de-France.</p><p>Un repas, mais surtout un moment d’échange.</p></div>
-          </div></div></div>
+      <ul class="pgrid">
+        <li class="pcard">
+          <figure class="photo" data-src="photos/prog-maraudes.jpg"><img src="photos/prog-maraudes.jpg" alt="Maraude du soir dans Paris" decoding="async" loading="lazy" width="933" height="1400"></figure>
+          <div class="pcard-body">
+            <h3>Maraudes</h3>
+            <p class="pcard-num"><b>11&nbsp;675</b><span>repas distribués de janvier à octobre 2026</span></p>
+            <p>Chaque semaine, des repas chauds faits maison pour les personnes à la rue, dans Paris et en Île-de-France. Un repas, et surtout un moment d’échange.</p>
+            <a class="pcard-cta" href="/benevole">Devenir bénévole <span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="prog-item" data-open="false">
-          <button aria-expanded="false"><span class="prog-name">Café solidaire</span><span class="plus" aria-hidden="true"></span></button>
-          <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-cafe.jpg"><img src="photos/prog-cafe.jpg" alt="Le café solidaire" decoding="async" loading="lazy" width="1120" height="1400"></figure>
-            <div><p>Un lieu ouvert à tous, à prix solidaires. 100 % des bénéfices reversés à l’association.</p><p>Café, crêpes, granita selon la saison, sodas. Jeux vidéo et télé pour les jeunes du quartier.</p></div>
-          </div></div></div>
+        <li class="pcard">
+          <figure class="photo" data-src="photos/prog-etudiants.jpg"><img src="photos/prog-etudiants.jpg" alt="Distribution de colis alimentaires" decoding="async" loading="lazy" width="1120" height="1400"></figure>
+          <div class="pcard-body">
+            <h3>Distributions alimentaires</h3>
+            <p class="pcard-num"><b>77</b><span>distributions gratuites en 2026</span></p>
+            <p>Des colis pour les familles et les étudiants, avec les invendus de 17 commerces partenaires. Simple, rapide, sans jugement.</p>
+            <a class="pcard-cta" href="/dons">Faire un don <span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="prog-item" data-open="false">
-          <button aria-expanded="false"><span class="prog-name">Distributions alimentaires</span><span class="plus" aria-hidden="true"></span></button>
-          <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-etudiants.jpg"><img src="photos/prog-etudiants.jpg" alt="Distribution de colis alimentaires" decoding="async" loading="lazy" width="1120" height="1400"></figure>
-            <div><p>Des colis alimentaires pour les familles, les étudiants, pour tous ceux qui en ont besoin, sur inscription. Nos produits, achetés ou issus de collectes, et les invendus des commerces.</p><p>Simple, rapide, sans jugement.</p></div>
-          </div></div></div>
+        <li class="pcard">
+          <figure class="photo" data-src="photos/prog-cafe.jpg"><img src="photos/prog-cafe.jpg" alt="Le café solidaire" decoding="async" loading="lazy" width="1120" height="1400"></figure>
+          <div class="pcard-body">
+            <h3>Café solidaire</h3>
+            <p class="pcard-num"><b>≈&nbsp;7&nbsp;800</b><span>passages en caisse en 2026</span></p>
+            <p>Un lieu ouvert à tous, à prix solidaires. Café, crêpes, granita, jeux vidéo pour les jeunes du quartier. Les bénéfices repartent dans les actions.</p>
+            <a class="pcard-cta" href="https://maps.apple.com/?q=8%20rue%20du%20G%C3%A9n%C3%A9ral%20Humbert%2C%2075014%20Paris" rel="noopener" target="_blank">Nous trouver <span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="prog-item" data-open="false">
-          <button aria-expanded="false"><span class="prog-name">Bénévolat</span><span class="plus" aria-hidden="true"></span></button>
-          <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-benevolat.jpg"><img src="photos/prog-benevolat.jpg" alt="Bénévoles en cuisine" decoding="async" loading="lazy" width="1400" height="1000"></figure>
-            <div><p>En cuisine, en distribution, au café. Des collectes en magasin, des événements, de la coiffure et de la manucure solidaires.</p><p>Chacun vient avec ce qu’il sait faire.</p></div>
-          </div></div></div>
+        <li class="pcard">
+          <figure class="photo" data-src="photos/prog-benevolat.jpg"><img src="photos/prog-benevolat.jpg" alt="Bénévoles en cuisine" decoding="async" loading="lazy" width="1400" height="1000"></figure>
+          <div class="pcard-body">
+            <h3>Bénévolat</h3>
+            <p class="pcard-num"><b>8&nbsp;600&nbsp;H</b><span>de bénévolat par an, environ</span></p>
+            <p>Cuisine, distributions, café, collectes, coiffure et manucure solidaires. Chacun vient avec ce qu’il sait faire.</p>
+            <a class="pcard-cta" href="https://tally.so/r/vXGZo4" rel="noopener" target="_blank">Je m’inscris <span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="prog-item" data-open="false">
-          <button aria-expanded="false"><span class="prog-name">Textile solidaire</span><span class="plus" aria-hidden="true"></span></button>
-          <div class="prog-panel"><div><div class="prog-panel-in">
-            <figure class="photo" data-src="photos/prog-textile.jpg"><img src="photos/prog-textile.jpg" alt="Vêtements brodés de l’association" decoding="async" loading="lazy" width="1120" height="1400"></figure>
-            <div><p>Des vêtements à l’image de l’association, brodés ou sérigraphiés. Chaque pièce vendue finance nos actions.</p><p>Porter le message, littéralement.</p></div>
-          </div></div></div>
+        <li class="pcard">
+          <figure class="photo" data-src="photos/prog-textile.jpg"><img src="photos/prog-textile.jpg" alt="Vêtements brodés de l’association" decoding="async" loading="lazy" width="1120" height="1400"></figure>
+          <div class="pcard-body">
+            <h3>Textile solidaire</h3>
+            <p class="pcard-num"><b>o&nbsp;delarue</b><span>notre marque solidaire</span></p>
+            <p>Sweats, t-shirts et tote bags brodés. Chaque pièce vendue finance nos actions. Porter le message, littéralement.</p>
+            <a class="pcard-cta" href="https://boutique.ocoeurdelarue.org" rel="noopener" target="_blank">Voir la boutique <span aria-hidden="true">→</span></a>
+          </div>
         </li>
       </ul>
     </div>
@@ -678,6 +708,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
         <li><img src="logos/mairie-14.png" alt="Mairie du 14e" loading="lazy" width="439" height="250"></li>
         <li><img src="logos/seine-saint-denis.png" alt="Seine-Saint-Denis" loading="lazy" width="416" height="105"></li>
         <li><img src="logos/drihl.png" alt="Drihl" loading="lazy" width="376" height="186"></li>
+        <li><img src="logos/fondation-sncf.png" alt="Fondation Groupe SNCF" loading="lazy" width="440" height="395"></li>
         <li><img src="logos/fondation-carrefour.png" alt="Fondation Carrefour" loading="lazy" width="389" height="129"></li>
         <li><img src="logos/monoprix.png" alt="Monoprix" loading="lazy" width="372" height="216"></li>
         <li><img src="logos/timberland.png" alt="Timberland" loading="lazy" width="434" height="390"></li>
@@ -786,6 +817,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   const words = [...document.querySelectorAll('.hero-word')];
   const samedi = document.querySelector('.samedi');
   const track = document.querySelector('.samedi-track');
+  const bar = document.querySelector('.samedi-bar');
 
   const sizeSamedi = () => {
     if (desktop.matches && !reduce) {
@@ -813,6 +845,7 @@ body::before,.nav{background:rgba(255,255,255,.8)}
         const q = progress(samedi);
         const dist = track.scrollWidth - innerWidth;
         track.style.transform = `translate3d(${(-q * dist).toFixed(1)}px,0,0)`;
+        bar && bar.style.setProperty('--q', q.toFixed(4));
       }
     }
     ticking = false;
