@@ -268,6 +268,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .avis-link{font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
 .avis-link:hover{color:var(--red)}
 @media (max-width:899px){.avis-grid{grid-template-columns:1fr}}
+.fin-annee{display:block;background:var(--red);color:#fff;text-align:center;text-decoration:none;font-size:.9375rem;line-height:1.35;padding:11px 22px}
+.fin-annee[hidden]{display:none}
+.fin-annee b{white-space:nowrap;margin-left:6px;border-bottom:2px solid #fff}
+.fin-annee:hover b{border-bottom-color:transparent}
 .allies{background:var(--paper);color:var(--ink);padding:0 22px clamp(100px,14vw,170px)}
 .allies-in{max-width:1100px;margin:0 auto;border-top:1px solid var(--line);padding-top:clamp(70px,10vw,120px);text-align:center}
 .allies h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,4.92vw,4.1rem);line-height:1;letter-spacing:-.035em}
@@ -452,6 +456,8 @@ body::before,.nav{background:rgba(255,255,255,.8)}
 </head>
 <body>
 
+<a class="fin-annee" href="/aller/don-helloasso" hidden>Avant le 31 décembre, ton don de 50&nbsp;€ te revient à 17&nbsp;€ après réduction d’impôt. <b>Je donne →</b></a>
+<script>(function(){var b=document.querySelector('.fin-annee');if(b&&Date.now()<Date.parse('2027-01-01T00:00:00+01:00'))b.hidden=false;})();</script>
 <nav class="nav" data-open="false" aria-label="Navigation principale">
   <div class="nav-in">
     <a class="logo" href="#top"><img src="photos/logo-ocdlr-noir.png" alt="O Cœur de la Rue" width="642" height="160"></a>
