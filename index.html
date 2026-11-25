@@ -253,6 +253,21 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .spo-credit{margin-top:18px;font-size:.875rem;color:var(--muted);max-width:40ch}
 
 /* ============ PARTENAIRES (accueil) ============ */
+.avis{background:var(--paper);color:var(--ink);padding:clamp(90px,12vw,150px) 22px clamp(70px,9vw,110px)}
+.avis-in{max-width:1100px;margin:0 auto;text-align:center}
+.avis h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,4.92vw,4.1rem);line-height:1;letter-spacing:-.035em}
+.avis-note{margin-top:18px;font-size:1.0625rem;color:var(--muted)}
+.avis-note b{font-family:var(--display);font-weight:900;font-size:1.6em;color:var(--red);letter-spacing:-.03em}
+.avis-note span{font-weight:700;color:var(--ink)}
+.avis-note small{display:block;margin-top:4px;font-size:.8125rem}
+.avis-grid{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:clamp(36px,5vw,56px) 0;text-align:left}
+.avis-grid li{background:#F5F5F7;border-radius:22px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;gap:14px}
+.avis-stars{color:var(--red);letter-spacing:2px;font-size:1rem}
+.avis-grid blockquote{margin:0;font-size:1.0625rem;line-height:1.5;flex:1}
+.avis-src{font-weight:700;font-size:.875rem;color:var(--muted)}
+.avis-link{font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
+.avis-link:hover{color:var(--red)}
+@media (max-width:899px){.avis-grid{grid-template-columns:1fr}}
 .allies{background:var(--paper);color:var(--ink);padding:0 22px clamp(100px,14vw,170px)}
 .allies-in{max-width:1100px;margin:0 auto;border-top:1px solid var(--line);padding-top:clamp(70px,10vw,120px);text-align:center}
 .allies h2{font-family:var(--display);font-weight:900;font-size:clamp(2.05rem,4.92vw,4.1rem);line-height:1;letter-spacing:-.035em}
@@ -704,6 +719,19 @@ body::before,.nav{background:rgba(255,255,255,.8)}
   </section>
 
   <!-- PARTENAIRES -->
+  <section class="avis" aria-label="Avis">
+    <div class="avis-in">
+      <h2>Ils en parlent.</h2>
+      <p class="avis-note"><b>4,9</b><span>/5</span> · 53 avis Google <small>au 25 novembre 2026</small></p>
+      <ul class="avis-grid">
+        <li><span class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</span><blockquote>« Votre local n’est pas juste un espace physique, mais un véritable foyer où l’humanité, la solidarité et la chaleur humaine se font ressentir à chaque instant. »</blockquote><p class="avis-src">Avis Google</p></li>
+        <li><span class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</span><blockquote>« Des actions concrètes, faites avec gentillesse et respect. C’est touchant de voir des gens qui agissent vraiment pour les autres. »</blockquote><p class="avis-src">Avis Google</p></li>
+        <li><span class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</span><blockquote>« Merci pour les distributions qui sont vraiment de grande aide pour nous les étudiants. »</blockquote><p class="avis-src">Un étudiant · Avis Google</p></li>
+      </ul>
+      <a class="avis-link" href="https://www.google.com/maps/place/?q=place_id:ChIJafm6Qwpx5kcRWN8mvzjpyJo" rel="noopener" target="_blank">Voir tous nos avis <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <section class="allies" aria-label="Nos partenaires">
     <div class="allies-in">
       <h2>Ils avancent avec nous.</h2>
